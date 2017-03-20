@@ -1,0 +1,25 @@
+User registration, rank, access, comments, moderation
+1. Main page:   (sorting)  breadcrumbs
+2. Buy...
+4. Registration: cabinet, e-mail...
+5. Comments
+
+namespace,
+
+!!! SHIT WITH SORTING (bredor)
+
+
+
+rewrite:
+3. effect arrow stick-menu and rolling letters when hover
+4. cart - stop if scroll
+register when w<360
+
+
+
+DELETE:
+sticky.js, 'proteins', 'id'
+
+// https://docviewer.yandex.ua/?url=ya-disk-public%3A%2F%2FiqvUHgUHb3EMNNDNBu6njO0grGZOWyxOYT6qb3iamQw%3D&name=Pron.docx&c=5790ef012003
+
+

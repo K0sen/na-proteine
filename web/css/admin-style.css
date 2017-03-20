@@ -1,0 +1,7 @@
+body {
+    background-image: url(../img/linen.jpg);
+}
+
+.wrap > .container {
+    padding: 70px 15px 10px;
+}
