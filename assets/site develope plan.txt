@@ -20,6 +20,4 @@ register when w<360
 DELETE:
 sticky.js, 'proteins', 'id'
 
-// https://docviewer.yandex.ua/?url=ya-disk-public%3A%2F%2FiqvUHgUHb3EMNNDNBu6njO0grGZOWyxOYT6qb3iamQw%3D&name=Pron.docx&c=5790ef012003
-
 

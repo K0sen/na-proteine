@@ -1,6 +1,9 @@
 # phpstorm project files
 .idea
 
+#plan
+/assets/site develope plan.txt
+
 # netbeans project files
 nbproject
 
