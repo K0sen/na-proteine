@@ -398,12 +398,6 @@ a {
 
 /*LEFT SIDE*/
 
-
-#content {
-	padding-top: 30px;
-	margin: 0 auto;
-}
-
 #left_column {
 	width: 260px;
     float: left;
@@ -545,6 +539,11 @@ a {
 }
 
 /*CONTENT*/
+
+#content {
+	padding-top: 30px;
+	margin: 0 auto;
+}
 
 #product {
 	padding-left: 300px;
