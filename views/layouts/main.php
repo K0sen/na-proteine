@@ -6,6 +6,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use app\widgets\Alert;
 use app\assets\AppAsset;
 use app\models\LeftSide;
 
@@ -90,8 +91,18 @@ $brand = LeftSide::getLeft();
             </ul>
         </div>
         <div id="register">
-            <a href="#">Регистрация</a>
-            <a href="#">Авторизация</a>
+            <a href="<?= Yii::$app->urlManager->createUrl("/admin"); ?>">Admin</a>
+            <?php if(Yii::$app->user->isGuest) : ?>
+            <a href="<?= Yii::$app->urlManager->createUrl("site/login"); ?>">Регистрация</a>
+            <a href="<?= Yii::$app->urlManager->createUrl("site/login"); ?>">Авторизация</a>
+            <?php else : ?>
+            <a href="#">Кабинет</a>
+            <?=
+            Html::a("Logout, " . Yii::$app->user->identity->username,
+                ['site/logout'],
+                ['data-method'=>'post']);
+            ?>
+            <?php endif; ?>
         </div>
         <div class="stick-menu">
             <div class="stick-but">
@@ -137,6 +148,7 @@ $brand = LeftSide::getLeft();
     </a></div>
 
     <div id="content">
+        <?= Alert::widget() ?>
         <?= $this->render('@app/views/layouts/left_side.php', ['brand' => $brand]) ?>
         <div id="product" class="row">
             <?= $content ?>

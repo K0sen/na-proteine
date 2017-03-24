@@ -76,6 +76,7 @@ $config = [
                 'cart' => 'cart/show',
                 'cart/show' => 'cart/show',
                 'admin/show' => 'admin/product/index',
+                '<_a:(login|logout|signup|email-confirm|request-password-reset|password-reset)>' => 'site/<_a>',
             ],
         ],
     ],
