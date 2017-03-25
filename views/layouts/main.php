@@ -91,10 +91,11 @@ $brand = LeftSide::getLeft();
             </ul>
         </div>
         <div id="register">
-            <a href="<?= Yii::$app->urlManager->createUrl("/admin"); ?>">Admin</a>
+            <?php print_r(Yii::$app->user->isGuest) ?>
+            <a href="<?= Yii::$app->urlManager->createUrl("admin"); ?>">Admin</a>
             <?php if(Yii::$app->user->isGuest) : ?>
-            <a href="<?= Yii::$app->urlManager->createUrl("site/login"); ?>">Регистрация</a>
-            <a href="<?= Yii::$app->urlManager->createUrl("site/login"); ?>">Авторизация</a>
+            <a href="<?= Yii::$app->urlManager->createUrl("signup"); ?>">Регистрация</a>
+            <a href="<?= Yii::$app->urlManager->createUrl("login"); ?>">Авторизация</a>
             <?php else : ?>
             <a href="#">Кабинет</a>
             <?=

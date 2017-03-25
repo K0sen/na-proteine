@@ -13,6 +13,8 @@ echo $script;
 
 echo Yii::getAlias('@app/migrations');
 echo "<pre>";
+print_r(Yii::$app->user->identity);
+echo "-------------------------------";
 print_r(Yii::$app);
 print_r(get_declared_classes());
 echo "</pre>";
