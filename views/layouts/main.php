@@ -91,7 +91,6 @@ $brand = LeftSide::getLeft();
             </ul>
         </div>
         <div id="register">
-            <?php print_r(Yii::$app->user->isGuest) ?>
             <a href="<?= Yii::$app->urlManager->createUrl("admin"); ?>">Admin</a>
             <?php if(Yii::$app->user->isGuest) : ?>
             <a href="<?= Yii::$app->urlManager->createUrl("signup"); ?>">Регистрация</a>

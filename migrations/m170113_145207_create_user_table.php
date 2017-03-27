@@ -31,9 +31,6 @@ class m170113_145207_create_user_table extends Migration
         ], $tableOptions);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function down()
     {
         $this->dropTable('{{%user}}');

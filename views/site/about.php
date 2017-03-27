@@ -14,7 +14,7 @@ echo $script;
 echo Yii::getAlias('@app/migrations');
 echo "<pre>";
 print_r(Yii::$app->user->identity);
-echo "-------------------------------";
+echo "-------------------------------<br>";
 print_r(Yii::$app);
 print_r(get_declared_classes());
 echo "</pre>";
