@@ -51,8 +51,6 @@ class LoginForm extends Model
                 $this->addError('password', 'Неверное имя пользователя или пароль.');
             } elseif ($user && $user->status == User::STATUS_BLOCKED) {
                 $this->addError('username', 'Ваш аккаунт заблокирован.');
-            } elseif ($user && $user->status == User::STATUS_WAIT) {
-                $this->addError('username', 'Ваш аккаунт не подтвежден.');
             }
         }
     }

@@ -47,7 +47,7 @@ $brand = LeftSide::getLeft();
                 <li><a href="#">Статьи</a></li>
                 <li><a href="#">Корзина</a></li>
                 <li><a href="#">Оплата и доставка</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
             </ul>
         </div>
     </div>
@@ -72,7 +72,7 @@ $brand = LeftSide::getLeft();
                 <li><a href="#">Статьи</a></li>
                 <li><a href="#">Корзина</a></li>
                 <li><a href="#">Оплата и доставка</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
             </ul>
         </div>
         <button id="but_collapse" type="button" class="btn glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target="#menu_collapse"></button>
@@ -87,7 +87,7 @@ $brand = LeftSide::getLeft();
                 <li><a href="#">Статьи</a></li>
                 <li><a href="#">Корзина</a></li>
                 <li><a href="#">Оплата и доставка</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
             </ul>
         </div>
         <div id="register">

@@ -30,7 +30,7 @@ $this->title = $product['name'];
         </div>
 
         <div id="text-characteristic"><?= $product['info'] ?></div>
-        <div id="text-replies">adsfaads asdf asdfasf asdfasdfasdf adsf adsf adf 1 514123 234</div>
+        <div id="text-replies"><?php print_r($_GET); ?></div>
     </div>
 
 <?php else: ?>

@@ -36,21 +36,16 @@ AdminAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/product']],
+            ['label' => 'Home', 'url' => ['/']],
             ['label' => 'Products', 'url' => ['/admin/show']],
             ['label' => 'Cart', 'url' => ['/cart']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+            ('<li>' . Html::beginForm(['/logout'], 'post')
+                    . Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
-                . '</li>'
-            )
+                . '</li>'),
+            ['label' => 'About', 'url' => ['/about']],
         ],
     ]);
     NavBar::end();

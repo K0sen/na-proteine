@@ -42,6 +42,10 @@ class EmailConfirmForm extends Model
         $user->status = User::STATUS_ACTIVE;
         $user->removeEmailConfirmToken();
 
+        $auth = Yii::$app->authManager;
+        $userRole = $auth->getRole('user');
+        $auth->assign($userRole, $user->getId());
+
         return $user->save();
     }
 }

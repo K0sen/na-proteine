@@ -12,8 +12,14 @@ JS;
 echo $script;
 
 echo Yii::getAlias('@app/migrations');
+if (\Yii::$app->user->can('updateComment')) {
+    echo '    can create';
+} else {
+    echo '    no';
+}
 echo "<pre>";
-print_r(Yii::$app->user->identity);
+//print_r(Yii::$app->user->identity);
+print_r(Yii::$app->authManager);
 echo "-------------------------------<br>";
 print_r(Yii::$app);
 print_r(get_declared_classes());

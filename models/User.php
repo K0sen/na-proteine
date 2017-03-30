@@ -28,8 +28,6 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_BLOCKED = 0;
     const STATUS_WAIT = 1;
     const STATUS_ACTIVE = 2;
-    const STATUS_MODER = 3;
-    const STATUS_ADMIN = 4;
 
     /**
      * @inheritdoc
@@ -93,8 +91,6 @@ class User extends ActiveRecord implements IdentityInterface
             self::STATUS_BLOCKED => 'Заблокирован',
             self::STATUS_ACTIVE => 'Активен',
             self::STATUS_WAIT => 'Ожидает подтверждения',
-            self::STATUS_MODER => 'Ожидает подтверждения',
-            self::STATUS_ADMIN => 'Ожидает подтверждения',
         ];
     }
 
