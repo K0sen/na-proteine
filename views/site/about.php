@@ -23,7 +23,7 @@ if (\Yii::$app->user->can('updateOwnComment')) {
     echo '    no';
 }
 echo "<pre>";
-print_r(Yii::$app->user->identity->findIdentity(2)->username);
+print_r(\app\models\User::findIdentity(1)->username);
 //print_r(Yii::$app->authManager);
 echo "-------------------------------<br>";
 print_r(Yii::$app);

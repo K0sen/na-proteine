@@ -38,7 +38,7 @@ $this->title = $product['name'];
 
             if($comments) {
                 foreach ($comments as $value) {
-                    echo 'Author: ' . Yii::$app->user->identity->findIdentity($value['user_id'])->username;
+                    echo 'Author: ' . \app\models\User::findIdentity($value['user_id'])->username;
                     echo ' created at: ' . date("Y.m.d H:i", $value['created_at']) . '<br>' . '<br>';
                     echo $value['comment'] . '<br>';
                     if($value['updated_at'] > $value['created_at']) {
