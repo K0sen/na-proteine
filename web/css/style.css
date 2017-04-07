@@ -833,6 +833,11 @@ a {
 	border-right: none;
 }
 
+#wait {
+	display: block;
+	margin: 50px auto;
+}
+
 .smallImg {
 	width: 35px;
 	opacity: 0.8;

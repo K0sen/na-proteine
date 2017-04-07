@@ -8,6 +8,8 @@ use yii\helpers\Html;
 
 $this->title = 'Cart';
 
+echo Html::img('@web/img/animatedEllipse.gif', ['id' => 'wait']);
+
 ?>
 
 

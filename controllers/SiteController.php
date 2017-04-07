@@ -148,7 +148,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'Спасибо! Пароль успешно изменён.');
 
-            return $this->goHome();
+            return $this->redirect('/login');
         }
 
         return $this->render('resetPassword', [
@@ -172,9 +172,7 @@ class SiteController extends Controller
     public function actionAbout()
     {
         $products = Product::findByCookie();
-        $brand = LeftSide::getLeft();
         return $this->render('about', [
-            'brand' => $brand,
             'products' => $products,
         ]);
     }

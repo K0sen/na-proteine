@@ -3,13 +3,13 @@ namespace app\commands;
 
 use Yii;
 use yii\console\Controller;
+use app\rbac\AuthorRule;
 
 class RbacController extends Controller
 {
     public function actionInit()
     {
         $auth = Yii::$app->authManager;
-
 //        // добавляем разрешение "addComment"
 //        $addComment = $auth->createPermission('addComment');
 //        $addComment->description = 'Add a comment';
@@ -36,5 +36,24 @@ class RbacController extends Controller
 //        // обычно реализуемый в модели User.
 //        $auth->assign($user, 2);
 //        $auth->assign($admin, 1);
+
+        // AFTER
+//        $user = Yii::$app->authManager->getRole('user');
+//        $updateComment = Yii::$app->authManager->getPermission('updateComment');
+//
+//        $rule = new AuthorRule;
+//        $auth->add($rule);
+//
+//// добавляем разрешение "updateOwnPost" и привязываем к нему правило.
+//        $updateOwnComment = $auth->createPermission('updateOwnComment');
+//        $updateOwnComment->description = 'Update own comment';
+//        $updateOwnComment->ruleName = $rule->name;
+//        $auth->add($updateOwnComment);
+//
+//// "updateOwnPost" будет использоваться из "updatePost"
+//        $auth->addChild($updateOwnComment, $updateComment);
+//
+//// разрешаем "автору" обновлять его посты
+//        $auth->addChild($user, $updateOwnComment);
     }
 }

@@ -44,7 +44,7 @@
             <?php endforeach; ?>
         <span class="btn cartClean">Очистить Корзину</span>
         <span class="btn buy">Купить</span>
-        <?php else : ?>
+        <?php else  : echo Yii::$app->request->scriptUrl; ?>
             <span id="cartNoProducts">No products, please Lorem ipsum dolor sit.</span>
         <?php endif; ?>
     </div>

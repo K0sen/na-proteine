@@ -9,17 +9,22 @@ $this->title = 'Cart';
 $script = <<< JS
     alert(1);
 JS;
-echo $script;
+//echo $script;
+//
+//echo Yii::getAlias('@app/migrations');
 
-echo Yii::getAlias('@app/migrations');
-if (\Yii::$app->user->can('updateComment')) {
-    echo '    can create';
+echo Yii::$app->user->getId();
+
+
+echo "-------------------------------<br>";
+if (\Yii::$app->user->can('updateOwnComment')) {
+    echo '    can';
 } else {
     echo '    no';
 }
 echo "<pre>";
-//print_r(Yii::$app->user->identity);
-print_r(Yii::$app->authManager);
+print_r(Yii::$app->user->identity->findIdentity(2)->username);
+//print_r(Yii::$app->authManager);
 echo "-------------------------------<br>";
 print_r(Yii::$app);
 print_r(get_declared_classes());

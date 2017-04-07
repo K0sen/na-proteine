@@ -77,7 +77,6 @@ $config = [
                 'brand/<brand:[a-z_]+>' => 'product/brand',
                 'product/<id:\d+>' => 'product/product',
                 'cart' => 'cart/show',
-                'cart/show' => 'cart/show',
                 'admin/show' => 'admin/product/index',
                 '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset|about|contact)>' => 'site/<_a>',
             ],
