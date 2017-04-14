@@ -10,6 +10,8 @@ $this->title = 'Cart';
 
 echo Html::img('@web/img/animatedEllipse.gif', ['id' => 'wait']);
 
+$this->registerJsFile("@web/js/cart.js", ['depends' => 'yii\web\YiiAsset']);
+
 ?>
 
 

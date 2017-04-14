@@ -1,5 +1,6 @@
 <?php
 /* @var $product yii\web\View */
+/* @var $comments yii\web\View */
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \app\models\Comments */
@@ -7,7 +8,6 @@
 use yii\helpers\html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
-use app\widgets\Alert;
 
 $this->title = $product['name'];
 ?>
@@ -23,7 +23,7 @@ $this->title = $product['name'];
         }
         ?>
         </div>
-        <a href="/cart" style="text-decoration: none; color: black;"><span class="btn toCart">Пройти на кассу</span></a>
+        <a href="<?= Yii::$app->urlManager->createUrl('/cart'); ?>" style="text-decoration: none; color: black;"><span class="btn toCart">Пройти на кассу</span></a>
         <span class="btn cartAdd">Добавить в корзину</span>
     </div>
     <div id="product-info">
@@ -32,19 +32,25 @@ $this->title = $product['name'];
             <div class="btn replies">Отзывы</div>
         </div>
 
-        <div id="text-replies"><?= $product['info'] ?></div>
-        <div id="text-characteristic">
+        <div id="text-characteristic"><?= $product['info'] ?></div>
+        <div id="text-replies">
             <?php
-
+            if(Yii::$app->user->can('updateComment')){
+                echo 'can update' . '<br>';
+            }
             if($comments) {
                 foreach ($comments as $value) {
-                    echo 'Author: ' . \app\models\User::findIdentity($value['user_id'])->username;
-                    echo ' created at: ' . date("Y.m.d H:i", $value['created_at']) . '<br>' . '<br>';
-                    echo $value['comment'] . '<br>';
+                    echo '<div class="comment">';
+                    echo 'Author: <b>' . \app\models\User::findIdentity($value['user_id'])->username . '</b>&nbsp&nbsp&nbsp';
+                    echo '<i>created at: ' . date("Y.m.d H:i", $value['created_at']) . '</i><br>' . '<br>';
+                    echo $value['comment'] . '<br>' . '<br>';
                     if($value['updated_at'] > $value['created_at']) {
-                        echo '<br>' . 'last update: ' . date("Y.m.d H:i", $value['updated_at']) . '<br>';
+                        echo '<i>last update: ' . date("Y.m.d H:i", $value['updated_at']) . '</i><br>';
                     }
-                    echo '<hr>';
+                    if(Yii::$app->user->can('updateComment', ['post' => $value])){
+                        echo Html::button('Update your comment', ['class' => 'btn', 'name' => 'send_comment']);
+                    }
+                    echo '</div>';
                 }
             } else {
                 echo 'No comments yet';
@@ -62,8 +68,10 @@ $this->title = $product['name'];
                 ]);
                 echo Html::submitButton('Comment', ['class' => 'btn btn-primary', 'name' => 'send_comment']);
                 ActiveForm::end();
+            } else if(Yii::$app->user->isGuest){
+                echo Html::tag('span', 'Для добавления комментария необходима авторизация.', ['class' => 'alert-info alert']);
             } else {
-                echo Html::tag('span', 'Для добавления комментария необходима авторизация.');
+                echo Html::tag('span', 'Чтобы оставить комментарий подтвердите свой е-мейл', ['class' => 'alert-info alert']);
             }
             ?>
         </div>
