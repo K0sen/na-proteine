@@ -6,8 +6,6 @@
 /* @var $model \app\models\Comments */
 
 use yii\helpers\html;
-use yii\bootstrap\ActiveForm;
-use yii\captcha\Captcha;
 
 $this->title = $product['name'];
 ?>
@@ -23,6 +21,7 @@ $this->title = $product['name'];
         }
         ?>
         </div>
+        <input id="p_id" type="hidden" value="<?=$product['id']?>">
         <a href="<?= Yii::$app->urlManager->createUrl('/cart'); ?>" style="text-decoration: none; color: black;"><span class="btn toCart">Пройти на кассу</span></a>
         <span class="btn cartAdd">Добавить в корзину</span>
     </div>
@@ -34,46 +33,7 @@ $this->title = $product['name'];
 
         <div id="text-characteristic"><?= $product['info'] ?></div>
         <div id="text-replies">
-            <?php
-            if(Yii::$app->user->can('updateComment')){
-                echo 'can update' . '<br>';
-            }
-            if($comments) {
-                foreach ($comments as $value) {
-                    echo '<div class="comment">';
-                    echo 'Author: <b>' . \app\models\User::findIdentity($value['user_id'])->username . '</b>&nbsp&nbsp&nbsp';
-                    echo '<i>created at: ' . date("Y.m.d H:i", $value['created_at']) . '</i><br>' . '<br>';
-                    echo $value['comment'] . '<br>' . '<br>';
-                    if($value['updated_at'] > $value['created_at']) {
-                        echo '<i>last update: ' . date("Y.m.d H:i", $value['updated_at']) . '</i><br>';
-                    }
-                    if(Yii::$app->user->can('updateComment', ['post' => $value])){
-                        echo Html::button('Update your comment', ['class' => 'btn', 'name' => 'send_comment']);
-                    }
-                    echo '</div>';
-                }
-            } else {
-                echo 'No comments yet';
-            }
-
-            echo '<br>' . '<br>';
-
-            if (Yii::$app->user->can('addComment')) {
-
-                $form = ActiveForm::begin(['id' => 'text-comment']);
-                echo $form->field($model, 'comment')->textArea(['rows' => 6]);
-                echo $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                    'captchaAction' => 'site/captcha',
-                    'template' => '<div><div>{image}</div><div>{input}</div></div>',
-                ]);
-                echo Html::submitButton('Comment', ['class' => 'btn btn-primary', 'name' => 'send_comment']);
-                ActiveForm::end();
-            } else if(Yii::$app->user->isGuest){
-                echo Html::tag('span', 'Для добавления комментария необходима авторизация.', ['class' => 'alert-info alert']);
-            } else {
-                echo Html::tag('span', 'Чтобы оставить комментарий подтвердите свой е-мейл', ['class' => 'alert-info alert']);
-            }
-            ?>
+            <?php $this->registerJsFile("@web/js/comments.js", ['depends' => 'yii\web\YiiAsset'])?>
         </div>
     </div>
 

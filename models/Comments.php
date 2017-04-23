@@ -98,4 +98,22 @@ class Comments extends \yii\db\ActiveRecord
         return false;
 
     }
+
+    public function updateComment($comment_id, $new_text)
+    {
+        $comment = Comments::findOne($comment_id);
+        $comment->comment = $new_text;
+        if($new_text != '') {
+            $comment->save(false);              //false because not working (validation??)
+        }
+    }
+
+    public function deleteComment($comment_id)
+    {
+        $comment = self::findOne($comment_id);
+        if($comment) {
+
+        }
+        $comment->delete();
+    }
 }

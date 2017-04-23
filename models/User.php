@@ -79,6 +79,11 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(Comments::className(), ['user_id' => 'id']);
+    }
+
 
     public function getStatusName()
     {

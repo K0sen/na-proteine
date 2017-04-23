@@ -19,17 +19,23 @@ class RbacController extends Controller
 //        $updateComment = $auth->createPermission('updateComment');
 //        $updateComment->description = 'Update a Comment';
 //        $auth->add($updateComment);
+
+          // добавляем разрешение "deleteComment"
+//        $deleteComment = $auth->createPermission('deleteComment');
+//        $deleteComment->description = 'Delete a Comment';
+//        $auth->add($deleteComment);
 //
 //        // добавляем роль "user" и даём роли разрешение "addComment"
 //        $user = $auth->createRole('user');
 //        $auth->add($user);
 //        $auth->addChild($user, $addComment);
 //
-//        // добавляем роль "admin" и даём роли разрешение "updateComment"
+//        // добавляем роль "admin" и даём роли разрешение "updateComment" and "deleteComment"
 //        // а также все разрешения роли "user"
 //        $admin = $auth->createRole('admin');
 //        $auth->add($admin);
 //        $auth->addChild($admin, $updateComment);
+//        $auth->addChild($admin, $deleteComment);
 //        $auth->addChild($admin, $user);
 //
 //        // Назначение ролей пользователям. 1 и 2 это IDs возвращаемые IdentityInterface::getId()
@@ -38,7 +44,7 @@ class RbacController extends Controller
 //        $auth->assign($admin, 1);
 
         // AFTER
-//        $user = Yii::$app->authManager->getRole('user');
+
 //        $updateComment = Yii::$app->authManager->getPermission('updateComment');
 //
 //        $rule = new AuthorRule;

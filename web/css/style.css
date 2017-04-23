@@ -617,8 +617,33 @@ i {
 }
 
 .comment {
-	border-bottom: 1px solid brown;
-	margin-bottom: 10px;
+	position: relative;
+	border-bottom: #c5c5c5 1px solid;
+	margin-bottom: 30px;
+}
+
+.comment .created {
+	float: right;
+}
+
+.comment .updated {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: right;
+}
+
+.comment .commentText {
+	padding: 30px 10px;
+}
+
+.comment a {
+	color: black;
+}
+
+.comment #input {
+	margin: 10px 0;
+	display: none;
 }
 
 .col-xs-12, .col-md-6, .col-lg-4 {

@@ -4,40 +4,32 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\models\ProductSearch */
+/* @var $searchModel app\modules\models\CommentsControl */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Products';
+$this->title = 'Comments';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-index">
+<div class="comments-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?php echo Html::a('Create Product', ['create'], ['class' => 'btn btn-success']); ?>
-    </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-//            'id',
-            'name',
-            'price',
-            [                                   //create search area for type   (type_id)
-                'attribute' => 'type_id',
-                'value' => 'type.type'
-            ],
+            'comment',
+//           'user_id',
             [                                   //create search area for brand
-                'attribute' => 'brand_id',
-                'value' => 'brand.brand'
+                'attribute' => 'user_id',
+                'value' => 'user.username'
             ],
-            'count',
-//            'popularity',
-//            'info',
+            'created_at',
+            'updated_at',
+            // 'product_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

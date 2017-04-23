@@ -35,7 +35,7 @@ use app\models\Brand;
 
     <?= $form->field($model, 'popularity')->textInput() ?>
 
-    <?= $form->field($model, 'info')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'info')->textArea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
