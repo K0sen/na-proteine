@@ -56,8 +56,7 @@ class CommentController extends Controller
 
     public function actionUpdate($comment_id)
     {
-        $model = Comments::findOne($comment_id);
-        if (Yii::$app->user->can('updateOwnComment', ['post' => $model])) {
+        if(Yii::$app->user->can('updateComment')) {
             $model = new Comments();
             $new_text = Yii::$app->request->post('new_text');
             $model->updateComment($comment_id, $new_text);
@@ -69,8 +68,6 @@ class CommentController extends Controller
         if (Yii::$app->user->can('deleteComment')) {
             $a = new Comments;
             $a->deleteComment($comment_id);
-        } else {
-            echo "NA";
         }
     }
 

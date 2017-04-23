@@ -24,11 +24,11 @@ if($comments) {
         echo Html::button('X', ['class' => 'btn btn-danger cancel_upd', 'title' => 'cancel an update']);
         echo Html::endTag('div');
 
-        if(Yii::$app->user->can('updateOwnComment', ['post' => $value])){
+        if(Yii::$app->user->can('updateComment')){
             echo Html::button('Upd', ['class' => 'btn update_comment', 'title' => 'update a comment']);
         }
         if(Yii::$app->user->can('deleteComment')){
-            echo Html::button('X', ['class' => 'btn btn-danger delete_comment', 'title' => 'delete a comment']);
+            echo Html::button('DEL', ['class' => 'btn btn-danger delete_comment', 'title' => 'delete a comment']);
         }
         if($value['updated_at'] > $value['created_at']) {
             echo Html::tag('span', 'updated at: ' . date("Y.m.d H:i:s", $value['updated_at']), ['class' => 'updated']);

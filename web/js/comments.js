@@ -30,9 +30,8 @@ function updateCommentAjax(){
         var csrfToken = $('meta[name="csrf-token"]').attr("content");
         var comment_id = $(this).parent().siblings('.comment_id').val();
         var new_text = $(this).siblings('.form-control').val();
-        $.post('/comment/update?comment_id='+comment_id, { _csrf : csrfToken, new_text : new_text}, function(data) {
+        $.post('/comment/update?comment_id='+comment_id, { _csrf : csrfToken, new_text : new_text}, function() {
 
-            console.log(data);
             commentsAjax();
 
         });

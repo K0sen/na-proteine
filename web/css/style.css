@@ -646,6 +646,12 @@ i {
 	display: none;
 }
 
+.comment .c_admin {
+	font-style: italic;
+	color: #2b669a;
+	float: right;
+}
+
 .col-xs-12, .col-md-6, .col-lg-4 {
 	z-index: 1;
 }

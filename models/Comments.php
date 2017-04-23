@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "comments".
@@ -102,6 +103,12 @@ class Comments extends \yii\db\ActiveRecord
     public function updateComment($comment_id, $new_text)
     {
         $comment = Comments::findOne($comment_id);
+        $model = new Comments();
+        if (!Yii::$app->user->can('updateOwnComment', ['post' => $comment])) {
+            $watermark = Html::tag('span', '(C) Rewrite by admin', ['class' => 'c_admin']);
+            $new_text = $new_text.$watermark;
+        }
+
         $comment->comment = $new_text;
         if($new_text != '') {
             $comment->save(false);              //false because not working (validation??)
@@ -111,9 +118,6 @@ class Comments extends \yii\db\ActiveRecord
     public function deleteComment($comment_id)
     {
         $comment = self::findOne($comment_id);
-        if($comment) {
-
-        }
         $comment->delete();
     }
 }
