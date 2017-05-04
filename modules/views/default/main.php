@@ -11,7 +11,14 @@
     </p>
     <?php
 
-    echo date("Y}m{d H:i");
+    $auth = Yii::$app->authManager;
+    $userRole = $auth->getRole('admin');
+//    $auth->assign($userRole, 2);
+//    debug($auth->getRolesByUser('2')['admin']);
+    foreach($auth->getRoles() as $value) {
+        echo $value->name. ' --- ';
+    }
+
     echo "<pre>";
     print_r($layout);
     echo "</pre>";

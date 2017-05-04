@@ -9,14 +9,18 @@
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
+use app\models\User;
 
 if($comments) {
     foreach ($comments as $value) {
         echo '<div class="comment">';
         echo Html::input('hidden', null, $value['id'], ['class' => 'comment_id']);
-        echo 'Author: <b>' . \app\models\User::findIdentity($value['user_id'])->username . '</b>&nbsp&nbsp&nbsp';
+        echo 'Author: <b>' . User::findIdentity($value['user_id'])->username . '</b>&nbsp&nbsp&nbsp';
         echo Html::tag('div', 'created at: ' . date("Y.m.d H:i:s", $value['created_at']), ['class' => 'created']);
         echo '<div class="commentText">' . $value['comment'] . '</div>';
+        if($value['rewrite_by'] != $value['user_id']) {
+            echo Html::tag('span', '(c) Rewrite by <b>'.User::findIdentity($value['rewrite_by'])->username.'</b>', ['class' => 'c_admin']);
+        }
 
         echo Html::beginTag('div', ['id' => 'input']);
         echo Html::textarea('inputText', $value['comment'], ['class' => 'form-control', 'rows' => 6]);
@@ -24,7 +28,7 @@ if($comments) {
         echo Html::button('X', ['class' => 'btn btn-danger cancel_upd', 'title' => 'cancel an update']);
         echo Html::endTag('div');
 
-        if(Yii::$app->user->can('updateComment')){
+        if(Yii::$app->user->can('updateComment') || Yii::$app->user->can('updateOwnComment', ['post' => $value])){
             echo Html::button('Upd', ['class' => 'btn update_comment', 'title' => 'update a comment']);
         }
         if(Yii::$app->user->can('deleteComment')){

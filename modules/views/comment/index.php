@@ -20,15 +20,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
+            'id',
             'comment',
 //           'user_id',
             [                                   //create search area for brand
                 'attribute' => 'user_id',
                 'value' => 'user.username'
             ],
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'created_at',
+                'value' => 'created_at',
+                'format' => ['DateTime', 'php:Y.m.d H:i:s']
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => 'updated_at',
+                'format' => ['DateTime', 'php:Y.m.d H:i:s']
+            ],
             // 'product_id',
 
             ['class' => 'yii\grid\ActionColumn'],

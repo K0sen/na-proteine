@@ -4,7 +4,7 @@ namespace app\modules\controllers;
 
 use Yii;
 use app\models\Product;
-use app\modules\models\ProductSearch;
+use app\modules\models\ProductControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ProductSearch();
+        $searchModel = new ProductControl();
         $var = $searchModel::find()
             ->with('brand')
             ->with('type')

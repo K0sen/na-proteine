@@ -56,7 +56,8 @@ class CommentController extends Controller
 
     public function actionUpdate($comment_id)
     {
-        if(Yii::$app->user->can('updateComment')) {
+        $comment = Comments::findOne($comment_id);
+        if(Yii::$app->user->can('updateComment') || Yii::$app->user->can('updateOwnComment', ['post' => $comment])) {
             $model = new Comments();
             $new_text = Yii::$app->request->post('new_text');
             $model->updateComment($comment_id, $new_text);

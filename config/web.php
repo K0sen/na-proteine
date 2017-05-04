@@ -78,6 +78,7 @@ $config = [
                 'product/<id:\d+>' => 'product/product',
                 'cart' => 'cart/show',
                 'admin/show' => 'admin/product/index',
+                'admin/comment' => 'admin/comment/index',
                 '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset|about|contact)>' => 'site/<_a>',
             ],
         ],

@@ -39,6 +39,8 @@ AdminAsset::register($this);
             ['label' => 'Home', 'url' => ['/']],
             ['label' => 'Products', 'url' => ['/admin/show']],
             ['label' => 'Cart', 'url' => ['/cart']],
+            ['label' => 'Comment', 'url' => ['/admin/comment']],
+            ['label' => 'User', 'url' => ['/admin/user']],
             ('<li>' . Html::beginForm(['/logout'], 'post')
                     . Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']

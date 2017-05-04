@@ -10,7 +10,7 @@ use app\models\Product;
 /**
  * ProductSearch represents the model behind the search form about `app\models\Product`.
  */
-class ProductSearch extends Product
+class ProductControl extends Product
 {
     /**
      * @inheritdoc

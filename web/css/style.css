@@ -623,10 +623,12 @@ i {
 }
 
 .comment .created {
+	font-style: italic;
 	float: right;
 }
 
 .comment .updated {
+	font-style: italic;
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -634,6 +636,8 @@ i {
 }
 
 .comment .commentText {
+	white-space: pre-wrap;
+	word-wrap: break-word;
 	padding: 30px 10px;
 }
 
@@ -647,6 +651,8 @@ i {
 }
 
 .comment .c_admin {
+	position: relative;
+	bottom: 20px;
 	font-style: italic;
 	color: #2b669a;
 	float: right;

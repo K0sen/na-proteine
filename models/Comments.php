@@ -4,7 +4,6 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\helpers\Html;
 
 /**
  * This is the model class for table "comments".
@@ -13,6 +12,7 @@ use yii\helpers\Html;
  * @property integer $user_id
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $rewrite_by
  * @property string $product_id
  * @property string $comment
  *
@@ -45,8 +45,8 @@ class Comments extends \yii\db\ActiveRecord
         return [
             ['comment', 'required'],
             ['verifyCode', 'captcha', 'captchaAction' => 'site/captcha'],
-//            [['user_id', 'product_id'], 'required'],
-//            [['user_id', 'product_id'], 'integer'],
+//            [['user_id', 'product_id', 'rewrite_by'], 'required'],
+//            [['user_id', 'product_id', 'rewrite_by'], 'integer'],
 //            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['product_id' => 'id']],
 //            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -59,7 +59,7 @@ class Comments extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
+            'user_id' => 'User',
             'verifyCode' => 'Verification Code',
             'created_at' => 'Created At',
             'product_id' => 'Product ID',
@@ -89,6 +89,7 @@ class Comments extends \yii\db\ActiveRecord
             $comment = new Comments();
             $comment->user_id = $user_id;
             $comment->product_id = $product_id;
+            $comment->rewrite_by = $user_id;
             $comment->comment = $this->comment;
 
             if ($comment->save(false)) {    //false because of captcha is regenerate https://github.com/yiisoft/yii2/issues/6115
@@ -103,12 +104,7 @@ class Comments extends \yii\db\ActiveRecord
     public function updateComment($comment_id, $new_text)
     {
         $comment = Comments::findOne($comment_id);
-        $model = new Comments();
-        if (!Yii::$app->user->can('updateOwnComment', ['post' => $comment])) {
-            $watermark = Html::tag('span', '(C) Rewrite by admin', ['class' => 'c_admin']);
-            $new_text = $new_text.$watermark;
-        }
-
+        $comment->rewrite_by = Yii::$app->user->id;
         $comment->comment = $new_text;
         if($new_text != '') {
             $comment->save(false);              //false because not working (validation??)
