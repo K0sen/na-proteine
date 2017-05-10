@@ -4,15 +4,14 @@
 /* @var $products yii\web\View */
 /* @var $brand yii\web\View */
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
-use yii\widgets\Breadcrumbs;
+
+$this->title = ucwords(Yii::$app->request->get('brand'));
+$this->params['breadcrumbs'][] = ['label' => 'Brands', 'url' => ['/brand']];
+$this->params['breadcrumbs'][] = ucwords($this->title);
 
 ?>
 
 <?php if($products) : ?>
-
-    <?php $this->title = strtoupper(Yii::$app->request->get('brand'));
-    ?>
 
         <?php foreach ($products as $product) : ?>
         <div class="col-xs-6 col-md-6 col-lg-4">

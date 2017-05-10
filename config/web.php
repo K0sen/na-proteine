@@ -69,16 +69,20 @@ $config = [
                 'main/<page:\d+>' => 'product/main',
                 'main' => 'product/main',
                 '/' => 'product/main',
+                'categories' => 'product/main',
                 'contact' => 'site/contact',
                 'captcha' => 'site/captcha',
                 'categories/<type:[a-z_]+>' => 'product/type',
 //                [proteins|gainers|vitamins|amino|energy|accessories] [a-z0-9_-]+>
                 'categories/<type:[a-z_]+>/<brand:[a-z_]+>' => 'product/type-brand',
                 'brand/<brand:[a-z_]+>' => 'product/brand',
+                'brand' => 'product/brand-list',
                 'product/<id:\d+>' => 'product/product',
                 'cart' => 'cart/show',
-                'admin/show' => 'admin/product/index',
                 'admin/comment' => 'admin/comment/index',
+                'admin/show' => 'admin/product/index',
+                'admin/user' => 'admin/user/index',
+                'admin/user/<id:\d+>' => 'admin/user/show',
                 '<_a:(login|logout|signup|email-confirm|password-reset-request|password-reset|about|contact)>' => 'site/<_a>',
             ],
         ],
@@ -100,3 +104,5 @@ if (YII_ENV_DEV) {
 }
 
 return $config;
+// categories -> syntax/optimum
+// brand

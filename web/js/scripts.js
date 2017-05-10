@@ -158,7 +158,7 @@ $(document).ready(function() {
 			var array = cook.split(', ');
 			var bc = $('#basket-count');
 			var bi = $('#basket-info');
-			var shadow = bc.css('textShadow');
+			var shadow = 'black 0 0 1px, black 0 0 2px, black 0 0 3px, black 0 0 4px, black 0 0 5px, black 0 0 6px';
 			var boldShadow = shadow + ', black 0 0 8px, black 0 0 9px, black 0 0 10px, black 0 0 11px, black 0 0 12px, black 0 0 13px';
 			bi.show();
 			bi.css('boxShadow', '0 0 20px #000');

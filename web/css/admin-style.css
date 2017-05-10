@@ -2,6 +2,80 @@ body {
     background-image: url(../img/linen.jpg);
 }
 
+html, body {
+    min-width: 360px;
+}
+
 .wrap > .container {
     padding: 70px 15px 10px;
+}
+
+#user-table {
+    width: 100%;
+}
+
+#user-table .user {
+    height: 30px;
+}
+
+#user-table span {
+    float: left;
+}
+
+#user-table .username {
+    color: purple;
+    width: 10%;
+}
+
+#user-table .user-email {
+    color: blue;
+    width: 25%;
+}
+
+#user-table .user-create {
+    width: 20%;
+}
+
+#user-table .user-role {
+    width: 10%;
+}
+
+#user-table .glyphicon {
+    width: 5%;
+}
+
+@media (max-width: 992px){
+    #user-table .username {
+        width: 10%;
+    }
+
+    #user-table .user-email {
+        width: 35%;
+    }
+
+    #user-table .user-create {
+        width: 25%;
+    }
+
+    #user-table .user-role {
+        width: 15%;
+    }
+
+    #user-table .glyphicon {
+        width: 5%;
+    }
+}
+
+@media (max-width: 600px) {
+    #user-table .user-create {
+        display: none;
+    }
+
+    #user-table .user-email {
+        width: 60%;
+    }
+
+    #user-table .username {
+        width: 20%;
+    }
 }

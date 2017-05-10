@@ -13,10 +13,9 @@ use yii\widgets\Breadcrumbs;
 ?>
 
 <div class="navigation">
-    <div class="sorting">Сортировка по:    цене <span id="price-up" class="sort_up" title="От дешевых к дорогим"></span>
-                                                <span id="price-down" class="sort_down" title="От дорогих к дешевым"></span>
-                                   популярности <span id="popularity-up" class="sort_up" title="От отстоя к популярным"></span>
-                                                <span id="popularity-down" class="sort_down" title="От популярных к отстойным"></span></div>
+    <div class="sorting">Сортировка по цене <span id="price-up" class="sort_up" title="От дешевых к дорогим"></span>
+                                            <span id="price-down" class="sort_down" title="От дорогих к дешевым"></span>
+    </div>
     <?= LinkPager::widget(['pagination' => $pagination,
         'lastPageLabel'=>'»',
         'firstPageLabel'=>'«',

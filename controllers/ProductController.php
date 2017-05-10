@@ -2,14 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\Comments;
-use app\models\LeftSide;
+use app\models\Brand;
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use app\models\Product;
 use yii\data\Pagination;
-use yii\web\IdentityInterface;
 
 class ProductController extends Controller
 {
@@ -81,13 +78,24 @@ class ProductController extends Controller
         ]);
     }
 
-    public function actionProduct()
+    public function actionBrandList()
     {
-        $product_id = Yii::$app->request->get('id');
-        $product = Product::findOne($product_id);
+        $brands = new Brand();
+        $brands = $brands->find()->all();
+
+        return $this->render('brand-list', [
+            'brands' => $brands,
+        ]);
+    }
+
+    public function actionProduct($id)
+    {
+        $product = Product::findOne($id);
+        $brand = Brand::findOne($product->brand_id); // TODO ??
 
         return $this->render('product', [
             'product' => $product,
+            'brand' => $brand
         ]);
     }
 

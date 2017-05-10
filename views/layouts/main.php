@@ -91,7 +91,9 @@ $brand = LeftSide::getLeft();
             </ul>
         </div>
         <div id="register">
+            <?php if(key(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId())) == 'admin') : ?>
             <a href="<?= Yii::$app->urlManager->createUrl("admin"); ?>">Admin</a>
+            <?php endif; ?>
             <?php if(Yii::$app->user->isGuest) : ?>
             <a href="<?= Yii::$app->urlManager->createUrl("signup"); ?>">Регистрация</a>
             <a href="<?= Yii::$app->urlManager->createUrl("login"); ?>">Авторизация</a>
@@ -149,6 +151,9 @@ $brand = LeftSide::getLeft();
 
     <div id="content">
         <?= Alert::widget() ?>
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
         <?= $this->render('@app/views/layouts/left_side.php', ['brand' => $brand]) ?>
         <div id="product" class="row">
             <?= $content ?>

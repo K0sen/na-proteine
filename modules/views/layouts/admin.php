@@ -36,24 +36,28 @@ AdminAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/']],
             ['label' => 'Products', 'url' => ['/admin/show']],
-            ['label' => 'Cart', 'url' => ['/cart']],
-            ['label' => 'Comment', 'url' => ['/admin/comment']],
-            ['label' => 'User', 'url' => ['/admin/user']],
+            ['label' => 'Comments', 'url' => ['/admin/comment']],
+            ['label' => 'Users', 'url' => ['/admin/user']],
             ('<li>' . Html::beginForm(['/logout'], 'post')
                     . Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
                 . '</li>'),
-            ['label' => 'About', 'url' => ['/about']],
         ],
     ]);
     NavBar::end();
     ?>
 
     <div class="container">
+        <?= Breadcrumbs::widget([
+            'homeLink' => [
+                'label' => Yii::t('yii', 'Admin'),
+                'url' => Yii::$app->urlManager->createUrl('/admin'),
+            ],
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
         <?= $content ?>
     </div>
 </div>

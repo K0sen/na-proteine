@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\bootstrap\Html;
 
 /**
  * LoginForm is the model behind the login form.
@@ -51,6 +52,8 @@ class LoginForm extends Model
                 $this->addError('password', 'Неверное имя пользователя или пароль.');
             } elseif ($user && $user->status == User::STATUS_BLOCKED) {
                 $this->addError('username', 'Ваш аккаунт заблокирован.');
+            } elseif ($user && $user->status == User::STATUS_WAIT) {
+                $this->addError('username', "Подтвердите свой e-mail");
             }
         }
     }

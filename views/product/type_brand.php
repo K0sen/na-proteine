@@ -8,12 +8,18 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\widgets\Breadcrumbs;
 
+$brand = str_replace('_', ' ', Yii::$app->request->get('brand'));
+$type = str_replace('_', ' ', Yii::$app->request->get('type'));
+
+$this->title = ucwords($type);
+$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['/']];
+$this->params['breadcrumbs'][] = ['label' => ucwords($brand), 'url' => ["categories/".Yii::$app->request->get('brand')]];
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <?php if ($products) : ?>
 
-    <?php $this->title = (strtoupper(Yii::$app->request->get('brand'))) .' | '. (strtoupper(Yii::$app->request->get('type')));
-    ?>
         <?php foreach ($products as $product) : ?>
         <div class="col-xs-6 col-md-6 col-lg-4">
             <div class="information">

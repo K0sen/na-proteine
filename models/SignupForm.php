@@ -57,6 +57,9 @@ class SignupForm extends Model
                     ->setTo($this->email)
                     ->setSubject('Email confirmation for ' . Yii::$app->name)
                     ->send();
+                $auth = Yii::$app->authManager;
+                $userRole = $auth->getRole('unconfirmed');
+                $auth->assign($userRole, $user->getId());
                 return $user;
             }
         }

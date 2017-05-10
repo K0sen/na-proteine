@@ -399,6 +399,9 @@ i {
 	border-bottom: #c5c5c5 1px solid;
 }
 
+.breadcrumb {
+	margin-left: 100px;
+}
 
 /*LEFT SIDE*/
 
@@ -1033,19 +1036,11 @@ i {
 	height: 40px;
 }
 
-.navigation:first-child {
-	margin-bottom: 20px;
-}
-
-.navigation:last-child {
-	margin-top: 20px;
-}
-
 .navigation > .pagination {
 	display: inline-block;
 	margin: 0;
 	float: right;
-	margin-right: 20px;
+	margin-right: 30px;
 	margin-bottom: -10px;
 }
 
@@ -1306,8 +1301,18 @@ i {
 	}
 
 	.navigation > .sorting {
-		margin-top: 40px;
+		margin-top: 20px;
 		font-size: 13px;
+		margin-left: 35px;
+	}
+
+	.navigation > .pagination {
+		margin-bottom: 50px;
+		margin-right: 0;
+	}
+
+	.information {
+		margin-top: 15px;
 	}
 
 	#contact-footer {

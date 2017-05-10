@@ -15,13 +15,10 @@ JS;
 
 echo Yii::$app->user->getId();
 
+$auth = Yii::$app->authManager;
+$adm = $auth->getRole('admin');
+//$auth->assign($adm, 1);
 
-echo "-------------------------------<br>";
-if (\Yii::$app->user->can('updateOwnComment')) {
-    echo '    can';
-} else {
-    echo '    no';
-}
 echo "<pre>";
 print_r(\app\models\User::findIdentity(1)->username);
 //print_r(Yii::$app->authManager);

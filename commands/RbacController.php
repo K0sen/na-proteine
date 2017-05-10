@@ -30,13 +30,19 @@ class RbacController extends Controller
 //        $auth->add($user);
 //        $auth->addChild($user, $addComment);
 //
-//        // добавляем роль "admin" и даём роли разрешение "updateComment" and "deleteComment"
-//        // а также все разрешения роли "user"
+//        // добавляем роль "moder" и даём роли разрешение "updateComment" and "deleteComment"
+//        // а также
+//        $moder = $auth->createRole('moder');
+//        $auth->add($moder);
+//        $auth->addChild($moder, $updateComment);
+//        $auth->addChild($moder, $deleteComment);
+//        $auth->addChild($moder, $user);
+//
+//        // добавляем роль "admin" и даём все разрешения роли "moder"
 //        $admin = $auth->createRole('admin');
 //        $auth->add($admin);
-//        $auth->addChild($admin, $updateComment);
-//        $auth->addChild($admin, $deleteComment);
-//        $auth->addChild($admin, $user);
+//        $auth->addChild($admin, $moder);
+
 //
 //        // Назначение ролей пользователям. 1 и 2 это IDs возвращаемые IdentityInterface::getId()
 //        // обычно реализуемый в модели User.
