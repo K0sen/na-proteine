@@ -8,19 +8,20 @@
 $this->title = 'Na-proteine';
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
-use yii\widgets\Breadcrumbs;
 
 ?>
 
 <div class="navigation">
-    <div class="sorting">Сортировка по цене <span id="price-up" class="sort_up" title="От дешевых к дорогим"></span>
-                                            <span id="price-down" class="sort_down" title="От дорогих к дешевым"></span>
+    <div class="sorting">Сортировка по цене <a href="/?sort=price_up" id="price-up" class="sort_up" title="От дешевых к дорогим"></a>
+                                            <a href="/?sort=price_down" id="price-down" class="sort_down" title="От дорогих к дешевым"></a>
     </div>
     <?= LinkPager::widget(['pagination' => $pagination,
         'lastPageLabel'=>'»',
         'firstPageLabel'=>'«',
         'prevPageLabel' => '<',
-        'nextPageLabel' => '>',]) ?>
+        'nextPageLabel' => '>',
+        'maxButtonCount' => 5
+            ]) ?>
 </div>
 <?php foreach ($products as $product) : ?>
 <div class="col-xs-6 col-md-6 col-lg-4">

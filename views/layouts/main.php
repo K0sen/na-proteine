@@ -43,10 +43,10 @@ $brand = LeftSide::getLeft();
         <div id="motivation-fix"><span>No pain - no gain<span></div>
         <div id="menu_collapse_fix" class="collapse">
             <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Статьи</a></li>
-                <li><a href="#">Корзина</a></li>
-                <li><a href="#">Оплата и доставка</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("/"); ?>">Главная</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("articles"); ?>">Статьи</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("cart"); ?>">Корзина</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("delivery"); ?>">Оплата и доставка</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
             </ul>
         </div>
@@ -68,10 +68,10 @@ $brand = LeftSide::getLeft();
         </div>
         <div id="main_menu">
             <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Статьи</a></li>
-                <li><a href="#">Корзина</a></li>
-                <li><a href="#">Оплата и доставка</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("/"); ?>">Главная</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("articles"); ?>">Статьи</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("cart"); ?>">Корзина</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("delivery"); ?>">Оплата и доставка</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
             </ul>
         </div>
@@ -83,10 +83,10 @@ $brand = LeftSide::getLeft();
         </div>
         <div id="menu_collapse" class="collapse">
             <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Статьи</a></li>
-                <li><a href="#">Корзина</a></li>
-                <li><a href="#">Оплата и доставка</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("/"); ?>">Главная</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("articles"); ?>">Статьи</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("cart"); ?>">Корзина</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("delivery"); ?>">Оплата и доставка</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
             </ul>
         </div>
@@ -119,26 +119,26 @@ $brand = LeftSide::getLeft();
             <div class="stick-group">
                 <ul>
                     <?php foreach ($brand as $key => $brand_name) : ?>
-                        <li><a href="<?php $name = strtolower($key);
-                                           echo Yii::$app->urlManager->createUrl("categories/$name");?>"><?= Yii::t('app', "$name") ?></a>
-                            <div class="brandname">
-                                <ul>
-                                    <?php foreach($brand_name as $value) :?>
-                                        <li><a href="<?php
-                                            $name = strToLower(str_replace(' ', '_', $value['brand']));
-                                            $type = strToLower(str_replace(' ', '_', $value['type']));
-                                            echo Yii::$app->urlManager->createUrl("categories/$type/$name"); ?>
-                                        "><?= $value['brand'] ?></a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                            <div class="stick-bottom">
-                                <div class="stick-triangle">
+                    <li><a href="<?php $name = strtolower($key);
+                                       echo Yii::$app->urlManager->createUrl("categories/$name");?>"><?= Yii::t('app', "$name") ?></a>
+                        <div class="brandname">
+                            <ul>
+                                <?php foreach($brand_name as $value) :?>
+                                <li><a href="<?php
+                                    $name = strToLower(str_replace(' ', '_', $value['brand']));
+                                    $type = strToLower(str_replace(' ', '_', $value['type']));
+                                    echo Yii::$app->urlManager->createUrl("categories/$type/$name"); ?>
+                                "><?= $value['brand'] ?></a>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <div class="stick-bottom">
+                            <div class="stick-triangle">
 
-                                </div>
                             </div>
-                        </li>
+                        </div>
+                    </li>
                     <?php endforeach; ?>
                 </ul>
             </div>

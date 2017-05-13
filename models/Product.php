@@ -64,15 +64,24 @@ class Product extends ActiveRecord
     }
 
 
-    public static function getProducts($pagination)
+    public static function getProducts($pagination, $sort)
     {
-        $command = Yii::$app->db->createCommand("SELECT p.id ,p.name, p.price, b.brand AS brand, t.type
+        $orderBy = null;
+
+        if($sort == 'price_up') {
+            $orderBy = 'ORDER BY price ASC';
+        } else if ($sort == 'price_down') {
+            $orderBy = 'ORDER BY price DESC';
+        }
+
+        $products = Yii::$app->db->createCommand("SELECT p.id ,p.name, p.price, b.brand AS brand, t.type
                                                  FROM product p
                                                  LEFT JOIN brand b ON b.id = p.brand_id
                                                  LEFT JOIN type t ON t.id = p.type_id
+                                                 $orderBy
                                                  LIMIT $pagination->limit OFFSET $pagination->offset
-                                                 ");  // TODO request by AR
-        $products = $command->queryAll();
+                                                 ")
+                                         ->queryAll(); // TODO request by AR
 
         return $products;
     }
@@ -83,49 +92,31 @@ class Product extends ActiveRecord
         $type = Yii::$app->request->get('type');
         $brand = str_replace('_', ' ', $brand);
         $type = str_replace('_', ' ', $type);
-        $command = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
-                                                WHERE b.brand = '$brand'
-                                                AND t.type = '$type'
-                                               ");
-        $products = $command->queryAll();
+                                                WHERE b.brand = :brand
+                                                AND t.type = :type
+                                               ")
+                                        ->bindValue(':brand', $brand)
+                                        ->bindValue(':type', $type)
+                                        ->queryAll();
         return $products;
-//                $sql = "SELECT p.name, p.price, b.name AS brand     TODO
-//                 FROM product p
-//                 LEFT JOIN brand b ON b.id = p.brand_id";
-//        $products = Product::findBySql($sql)->all();
-
-//        $products = $query
-//            ->joinWith(['brand'])
-//            ->select(['brand.brand AS brand'])
-//            ->offset($pagination->offset)
-//            ->limit($pagination->limit)
-//            ->all();
-
-//        $brand = LeftSide::find()
-//            ->select('*')
-//            ->all();
-//
-//        LeftSide::$name = 'type';
-//
-//        $type = LeftSide::find()
-//            ->select('*')
-//            ->all();
     }
 
     public static function findType()
     {
         $type = Yii::$app->request->get('type');
         $type = str_replace('_', ' ', $type);
-        $command = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
-                                                WHERE  t.type = '$type'
-                                               ");
-        $products = $command->queryAll();
+                                                WHERE  t.type = :type
+                                               ")
+                                        ->bindValue(':type', $type)
+                                        ->queryAll();
         return $products;
     }
 
@@ -133,13 +124,14 @@ class Product extends ActiveRecord
     {
         $brand = Yii::$app->request->get('brand');
         $brand = str_replace('_', ' ', $brand);
-        $command = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
-                                                WHERE b.brand = '$brand'
-                                               ");
-        $products = $command->queryAll();
+                                                WHERE b.brand = :brand
+                                               ")
+                                        ->bindValue(':brand', $brand)
+                                        ->queryAll();
         return $products;
     }
 
@@ -157,14 +149,15 @@ class Product extends ActiveRecord
         if ($ids){
             $products = [];
             foreach ($ids as $id) {
-                $command = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+                $product = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
                                                     FROM `product` p
                                                     LEFT JOIN brand b ON b.id = p.brand_id
                                                     LEFT JOIN type t ON t.id = p.type_id
-                                                    WHERE p.id = '$id'
-                                               ");
-                $product = $command->queryAll();
-                $products[] = $product[0];
+                                                    WHERE p.id = :id
+                                               ")
+                                        ->bindValue(':id', $id)
+                                        ->queryOne();
+                $products[] = $product;
             }
             return $products;
         } else {

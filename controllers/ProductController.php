@@ -22,7 +22,7 @@ class ProductController extends Controller
         return $this->render('index', ['var' => $var]);
     }
 
-    public function actionMain()
+    public function actionMain($sort = null)
     {
         $query = Product::find();
 
@@ -31,7 +31,7 @@ class ProductController extends Controller
             'totalCount' => $query->count(),
         ]);
 
-        $products = Product::getProducts($pagination);
+        $products = Product::getProducts($pagination, $sort);
 
         return $this->render('main', [
             'products' => $products,
