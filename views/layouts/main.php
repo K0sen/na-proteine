@@ -9,10 +9,12 @@ use yii\widgets\Breadcrumbs;
 use app\widgets\Alert;
 use app\assets\AppAsset;
 use app\models\LeftSide;
+use app\models\Article;
 
 AppAsset::register($this);
 
 $brand = LeftSide::getLeft();
+$article = Article::getTwo();
 
 ?>
 <?php $this->beginPage() ?>
@@ -44,7 +46,7 @@ $brand = LeftSide::getLeft();
         <div id="menu_collapse_fix" class="collapse">
             <ul>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("/"); ?>">Главная</a></li>
-                <li><a href="<?= Yii::$app->urlManager->createUrl("articles"); ?>">Статьи</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("article"); ?>">Статьи</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("cart"); ?>">Корзина</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("delivery"); ?>">Оплата и доставка</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
@@ -69,7 +71,7 @@ $brand = LeftSide::getLeft();
         <div id="main_menu">
             <ul>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("/"); ?>">Главная</a></li>
-                <li><a href="<?= Yii::$app->urlManager->createUrl("articles"); ?>">Статьи</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("article"); ?>">Статьи</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("cart"); ?>">Корзина</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("delivery"); ?>">Оплата и доставка</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
@@ -84,7 +86,7 @@ $brand = LeftSide::getLeft();
         <div id="menu_collapse" class="collapse">
             <ul>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("/"); ?>">Главная</a></li>
-                <li><a href="<?= Yii::$app->urlManager->createUrl("articles"); ?>">Статьи</a></li>
+                <li><a href="<?= Yii::$app->urlManager->createUrl("article"); ?>">Статьи</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("cart"); ?>">Корзина</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("delivery"); ?>">Оплата и доставка</a></li>
                 <li><a href="<?= Yii::$app->urlManager->createUrl("about"); ?>">Контакты</a></li>
@@ -154,7 +156,7 @@ $brand = LeftSide::getLeft();
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?= $this->render('@app/views/layouts/left_side.php', ['brand' => $brand]) ?>
+        <?= $this->render('@app/views/layouts/left_side.php', ['brand' => $brand, 'article' => $article]) ?>
         <div id="product" class="row">
             <?= $content ?>
         </div>

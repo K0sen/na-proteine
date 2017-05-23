@@ -13,9 +13,12 @@ class LeftSide extends ActiveRecord
 
     public static function getLeft()
     {
+        $model = new Type();
+        $type_number = count($model->find()->all());
+
         $brand = [];
         $result = [];
-        for($i=1; $i<=6; $i++) {
+        for($i=1; $i<=$type_number; $i++) {
             $command = Yii::$app->db->createCommand("SELECT p.id, p.name, GROUP_CONCAT(DISTINCT b.brand) as brand, t.type AS type, b.id AS brand_id
                                                     FROM product p
                                                     LEFT JOIN brand b ON b.id = p.brand_id
@@ -23,8 +26,10 @@ class LeftSide extends ActiveRecord
                                                     WHERE t.id = $i
                                                     GROUP BY b.id
                                                    ");
-            $brand[] = $command->queryAll();
+            $command->queryAll() ? $brand[] = $command->queryAll() : null ;
         }
+
+
 
         foreach ($brand as $key => $value) {
             $result += [$value[0]['type'] => $value];

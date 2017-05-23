@@ -519,12 +519,12 @@ i {
 	background-color: rgba(255, 0, 0, 0.1);
 }
 
-.article {
+.article_left {
 	margin-top: 40px;
 	box-shadow: 4px 4px 20px #ff7a17;
 }
 
-.article > .article_title {
+.article_left > .article_left_title {
 	line-height: 35px;
 	text-align: center;
 	background-color: #E4E4E4;
@@ -532,14 +532,14 @@ i {
 	overflow: hidden;
 }
 
-.article > .article_title > a {
+.article_left > .article_left_title > a {
 	color: #cd7942;
 	font-size: 17px;
 	font-style: italic;
 	font-weight: bold;
 }
 
-.article > .article_desc {
+.article_left > .article_left_desc {
 	text-align: justify;
 	padding: 5px 8px;
 	border: #c5c5c5 1px solid;
@@ -1230,7 +1230,7 @@ i {
 		display: none;
 	}
 
-	.article {
+	.article_left {
 		display: none;
 	}
 

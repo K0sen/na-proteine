@@ -19,11 +19,15 @@ class RbacController extends Controller
 //        $updateComment = $auth->createPermission('updateComment');
 //        $updateComment->description = 'Update a Comment';
 //        $auth->add($updateComment);
-
-          // добавляем разрешение "deleteComment"
+//
+//        // добавляем разрешение "deleteComment"
 //        $deleteComment = $auth->createPermission('deleteComment');
 //        $deleteComment->description = 'Delete a Comment';
 //        $auth->add($deleteComment);
+//
+//        // добавляем роль "unconfirmed" без разрешений
+//        $unconfirmed = $auth->createRole('unconfirmed');
+//        $auth->add($unconfirmed);
 //
 //        // добавляем роль "user" и даём роли разрешение "addComment"
 //        $user = $auth->createRole('user');
@@ -43,14 +47,14 @@ class RbacController extends Controller
 //        $auth->add($admin);
 //        $auth->addChild($admin, $moder);
 
-//
-//        // Назначение ролей пользователям. 1 и 2 это IDs возвращаемые IdentityInterface::getId()
-//        // обычно реализуемый в модели User.
+
+        // Назначение ролей пользователям. 1 и 2 это IDs возвращаемые IdentityInterface::getId()
+        // обычно реализуемый в модели User.
 //        $auth->assign($user, 2);
 //        $auth->assign($admin, 1);
-
-        // AFTER
-
+//
+////         AFTER
+//
 //        $updateComment = Yii::$app->authManager->getPermission('updateComment');
 //
 //        $rule = new AuthorRule;
@@ -67,5 +71,6 @@ class RbacController extends Controller
 //
 //// разрешаем "автору" обновлять его посты
 //        $auth->addChild($user, $updateOwnComment);
+
     }
 }

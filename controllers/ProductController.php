@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Brand;
+use app\models\Type;
 use Yii;
 use yii\web\Controller;
 use app\models\Product;
@@ -11,18 +12,7 @@ use yii\data\Pagination;
 class ProductController extends Controller
 {
 
-    public function actionIndex()
-    {
-        $product = new Product();
-
-        $var = $product::find()
-                            ->with('brand')
-                            ->all();
-
-        return $this->render('index', ['var' => $var]);
-    }
-
-    public function actionMain($sort = null)
+    public function actionIndex($sort = null)
     {
         $query = Product::find();
 
@@ -33,7 +23,7 @@ class ProductController extends Controller
 
         $products = Product::getProducts($pagination, $sort);
 
-        return $this->render('main', [
+        return $this->render('index', [
             'products' => $products,
             'pagination' => $pagination,
         ]);
@@ -80,11 +70,21 @@ class ProductController extends Controller
 
     public function actionBrandList()
     {
-        $brands = new Brand();
-        $brands = $brands->find()->all();
+        $model = new Brand();
+        $brands = $model->find()->all();
 
         return $this->render('brand-list', [
             'brands' => $brands,
+        ]);
+    }
+
+    public function actionCategoriesList()
+    {
+        $model = new Type();
+        $categories = $model->find()->all();
+
+        return $this->render('categories-list', [
+            'categories' => $categories,
         ]);
     }
 

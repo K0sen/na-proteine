@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "brand".
@@ -12,7 +13,7 @@ use Yii;
  *
  * @property Product[] $products
  */
-class Brand extends \yii\db\ActiveRecord
+class Brand extends ActiveRecord
 {
     /**
      * @inheritdoc

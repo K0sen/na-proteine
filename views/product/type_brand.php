@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $this->title = 'Error';
 ?>
 
-    ERROR NOT FOUND
+    No products in this category :(
     <!--    TODO-->
 
 <?php endif; ?>

@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "comments".
@@ -19,7 +20,7 @@ use yii\behaviors\TimestampBehavior;
  * @property Product $product
  * @property User $user
  */
-class Comments extends \yii\db\ActiveRecord
+class Comments extends ActiveRecord
 {
     public $verifyCode;
     /**

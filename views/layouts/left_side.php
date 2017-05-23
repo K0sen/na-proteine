@@ -1,6 +1,7 @@
 <?php
 
 /* @var $brand  */
+/* @var $article  */
 
 use yii\helpers\Html;
 
@@ -39,22 +40,15 @@ use yii\helpers\Html;
             <?php endforeach; ?>
         </ul>
     </div>
-    <div class="article">
-        <div class="article_title">
-            <a href="#">Title</a>
+    <?php foreach($article as $value) : ?>
+    <div class="article_left">
+        <div class="article_left_title">
+            <a href="<?= Yii::$app->urlManager->createUrl("article/{$value['id']}") ?>"><?= $value['title'] ?></a>
         </div>
-        <div class="article_desc">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere, fugit illo itaque iusto magni minima molestias pariatur quasi, qui quos reiciendis tempore unde ut vitae! Aperiam doloribus dolorum et exercitationem, suscipit tempore veritatis vero! A adipisci animi architecto at aut consequuntur dicta distinctio ducimus est expedita facilis impedit in itaque iure iusto laborum libero maxime minima minus mollitia, nam nemo non quas quibusdam quidem quod saepe sint sit, suscipit tempore tenetur velit vero.
-            <a href="#">Read more</a>
-        </div>
-    </div>
-    <div class="article">
-        <div class="article_title">
-            <a href="#">dsasdasdsdsada assasas asas asaaasassa</a>
-        </div>
-        <div class="article_desc">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere, fugit illo itaque iusto magni minima molestias pariatur quasi, qui quos reiciendis tempore unde ut vitae! Aperiam doloribus dolorum et exercitationem, suscipit tempore veritatis vero! A adipisci animi architecto at aut consequuntur dicta distinctio ducimus est expedita facilis impedit in itaque iure iusto laborum libero maxime minima minus mollitia, nam nemo non quas quibusdam quidem quod saepe sint sit, suscipit tempore tenetur velit vero.
-            <a href="#">Read more</a>
+        <div class="article_left_desc">
+            <?= $value['description_short'] ?>
+            <a href="<?= Yii::$app->urlManager->createUrl("article/{$value['id']}") ?>">Read more</a>
         </div>
     </div>
+    <?php endforeach; ?>
 </div>
