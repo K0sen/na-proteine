@@ -8,7 +8,7 @@
 use yii\helpers\html;
 
 $this->title = $product['name'];
-$this->params['breadcrumbs'][] = ['label' => 'Brands', 'url' => ['brand']];
+$this->params['breadcrumbs'][] = ['label' => 'Brands', 'url' => ['/brand']];
 $this->params['breadcrumbs'][] = ['label' => $brand->brand, 'url' => ['brand/'.strtolower(str_replace(' ', '_', $brand->brand))]];
 $this->params['breadcrumbs'][] = $this->title;
 

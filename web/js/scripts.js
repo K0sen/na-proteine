@@ -285,16 +285,26 @@ $(document).ready(function() {
 		});
 	}
 
+	$('.owl-carousel').owlCarousel({
+		loop:false,
+		nav:true,
+		autoplay: true,
+		rewind: false,			// Go backwards when the boundary has reached.
+		autoplayTimeout:4000,	// def: 5000
+		responsive:{
+			0:{
+				items:1
+			},
+			600:{
+				items:2
+			},
+			1200:{
+				items:3
+			}
+		}
+	});
 
 });
-
-
-//array.forEach(function(item, i, arr) {
-//	resu.push(item);
-//});  // перебор массива
-
-//$array = substr("{$number}", -1); //последний символ строки
-
 
 // hide collapse menu - trouble (console error)
 //https://habrahabr.ru/post/247857/

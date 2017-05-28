@@ -19,7 +19,9 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/style.css',
-        'css/bootstrap.css'
+        'css/bootstrap.css',
+        'css/owl.carousel.css',
+        'css/owl.theme.default.css'
     ];
 
     public $js = [
@@ -27,6 +29,7 @@ class AppAsset extends AssetBundle
         'js/bootstrap.min.js',
 //        'js/jquery.sticky.js',
         'js/cookie.js',
+        'js/owl.carousel.js'
     ];
 
     public $depends = [

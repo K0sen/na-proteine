@@ -86,6 +86,29 @@ class Product extends ActiveRecord
         return $products;
     }
 
+    public static function getMainPage()
+    {
+        $types = Type::find()->asArray()->all();
+        $products = [];
+
+        foreach($types as $type) {
+
+            $products[$type['type']] = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.popularity, b.brand, t.type
+                                                    FROM `product` p
+                                                    LEFT JOIN type t ON t.id = p.type_id
+                                                    LEFT JOIN brand b ON b.id = p.brand_id
+                                                    WHERE t.type = :type
+                                                    ORDER BY p.popularity DESC
+                                                    LIMIT 10
+                                                 ")
+                                        ->bindValue(':type', $type['type'])
+                                        ->queryAll(); // TODO request by AR
+
+        }
+
+        return $products;
+    }
+
     public static function findTypeBrand()
     {
         $brand = Yii::$app->request->get('brand');
