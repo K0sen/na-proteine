@@ -6,10 +6,6 @@ html, body {
 	font-family: Arial, sans-serif;
 }
 
-a {
-	text-decoration: none;
-}
-
 i {
 	font-style: italic;
 }
@@ -679,6 +675,15 @@ i {
 .information-title span {
 	margin-right: 10px;
 	line-height: 50px;
+}
+
+.information-title span a {
+	color: black;
+}
+
+.about-supmarket {
+	margin: 0 30px;
+	text-align: justify;
 }
 
 /*BLOCK OF PRODUCT*/

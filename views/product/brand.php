@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 
 $this->title = ucwords(Yii::$app->request->get('brand'));
+$this->title = ucwords(Yii::$app->request->get('brand'));
 $this->params['breadcrumbs'][] = ['label' => 'Brands', 'url' => ['/brand']];
 $this->params['breadcrumbs'][] = ucwords($this->title);
 
