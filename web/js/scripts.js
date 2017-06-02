@@ -286,20 +286,23 @@ $(document).ready(function() {
 	}
 
 	$('.owl-carousel').owlCarousel({
-		loop:false,
-		nav:true,
-		autoplay: true,
-		rewind: false,			// Go backwards when the boundary has reached.
-		autoplayTimeout:4000,	// def: 5000
-		responsive:{
-			0:{
-				items:1
+		loop : false,
+		nav  : true,
+		autoplay : true,
+		rewind   : false,			// Go backwards when the boundary has reached.
+		autoplayTimeout : 4000,	// def: 5000
+		responsive : {
+			0 : {
+				items : 1
 			},
-			600:{
-				items:2
+			450 : {
+				items : 2
 			},
-			1200:{
-				items:3
+			600 : {
+				items : 3
+			},
+			1200 : {
+				items : 4
 			}
 		}
 	});

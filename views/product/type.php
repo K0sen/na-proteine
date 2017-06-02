@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\widgets\Breadcrumbs;
 
-$this->title = strtoupper(Yii::$app->request->get('type'));
+$this->title = $products[0]['type'];
 $this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['/categories']];
 $this->params['breadcrumbs'][] = $this->title;
 

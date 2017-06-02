@@ -661,8 +661,14 @@ i {
 
 /*BLOCKS OF PRODUCT IN MAIN PAGE*/
 
+.owl-carousel {
+	margin-bottom: 20px;
+}
+
 .information-title {
-	margin: 20px 200px 20px 28px;
+	margin: 0 200px 20px 28px;
+	padding-right: 10px;
+	line-height: 50px;
 	height: 50px;
 	text-align: right;
 	background-color: red;
@@ -672,16 +678,24 @@ i {
 	border-left-color: rgba(255, 0, 0, 0.5);
 }
 
-.information-title span {
-	margin-right: 10px;
-	line-height: 50px;
-}
-
-.information-title span a {
+.information-title a {
 	color: black;
 }
 
-.about-supmarket {
+.information-title a:hover {
+	color: grey;
+}
+
+.owl-carousel .information {
+	margin-bottom: 0;
+	transform: scale(0.7);
+}
+
+.owl-carousel .information:hover {
+	transform: scale(0.8);
+}
+
+.about-market {
 	margin: 0 30px;
 	text-align: justify;
 }
