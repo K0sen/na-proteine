@@ -1,4 +1,4 @@
-Database scheme is in root of project - "na-proteine.sql"
+Database scheme is in root of the project - "na-proteine.sql"
 
 Yii 2 Basic Project Template
 ============================
