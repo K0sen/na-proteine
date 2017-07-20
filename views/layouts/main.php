@@ -100,7 +100,7 @@ $article = Article::getTwo();
             <a href="<?= Yii::$app->urlManager->createUrl("signup"); ?>">Регистрация</a>
             <a href="<?= Yii::$app->urlManager->createUrl("login"); ?>">Авторизация</a>
             <?php else : ?>
-            <a href="#">Кабинет</a>
+            <a href="<?= Yii::$app->urlManager->createUrl("cabinet"); ?>">Кабинет</a>
             <?=
             Html::a("Logout, " . Yii::$app->user->identity->username,
                 ['site/logout'],
@@ -111,10 +111,10 @@ $article = Article::getTwo();
         <div class="stick-menu">
             <div class="stick-but">
             <div class="stick-letter">
-                    <div id="m">M</div>
-                    <div id="e">E</div>
-                    <div id="n">N</div>
-                    <div id="u">U</div>
+                    <span id="m">M</span>
+                    <span id="e">E</span>
+                    <span id="n">N</span>
+                    <span id="u">U</span>
                 </div>
                 <div class="stick-arrow as"></div>
             </div>

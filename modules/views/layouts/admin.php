@@ -37,6 +37,7 @@ AdminAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Products', 'url' => ['/admin/show']],
+            ['label' => 'Articles', 'url' => ['/admin/article']],
             ['label' => 'Comments', 'url' => ['/admin/comment']],
             ['label' => 'Users', 'url' => ['/admin/user']],
             ('<li>' . Html::beginForm(['/logout'], 'post')

@@ -17,13 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div id="product-top">
         <div id="product-img">
-        <?php
-        if(file_exists('img/products/'.$product['id'].'.png')){
-            echo Html::img('@web/img/products/'.$product['id'].'.png');
-        } else {
-            echo Html::img('@web/img/goldwhey.jpg');
-        }
-        ?>
+            <?php
+            if ( file_exists('img/products/' . $product['image']) && $product['image'] != "" ) {
+                echo Html::img('@web/img/products/' . $product['image']); ;
+            } else {
+                echo Html::img('@web/img/products/default.png');
+            }
+            ?>
         </div>
         <input id="p_id" type="hidden" value="<?=$product['id']?>">
         <a href="<?= Yii::$app->urlManager->createUrl('/cart'); ?>" style="text-decoration: none; color: black;"><span class="btn toCart">Пройти на кассу</span></a>

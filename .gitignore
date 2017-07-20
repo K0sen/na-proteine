@@ -4,6 +4,9 @@
 #plan
 assets/site develope plan.txt
 
+#index.php
+/web/index.php
+
 # netbeans project files
 nbproject
 

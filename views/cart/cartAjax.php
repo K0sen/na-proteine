@@ -8,11 +8,12 @@
             $count = 1;
             foreach($products as $product) {
 
-                if(file_exists('img/products/'.$product['id'].'.png')){
-                    echo Html::img('@web/img/products/'.$product['id'].'.png', ['class' => 'smallImg', 'id' => 'p'. $count]);
+                if ( file_exists('img/products/' . $product['image']) && $product['image'] != "" ) {
+                    echo Html::img('@web/img/products/' . $product['image'], ['class' => 'smallImg', 'id' => 'p'. $count]); ;
                 } else {
-                    echo Html::img('@web/img/goldwhey.jpg', ['class' => 'smallImg', 'id' => 'p'. $count]);
+                    echo Html::img('@web/img/products/default.png', ['class' => 'smallImg', 'id' => 'p'. $count]);
                 }
+
                 $count++;
             }
         } else {
@@ -22,16 +23,18 @@
     </div>
     <div id="cartContent">
         <?php if(isset($products)) :
-
             foreach($products as $product) : ?>
                 <div>
                     <span class="cartCount">x<input type="number" min="1" max="99" value="1" size="5"></span>
-                    <span class="cartImg"><?php
-                    if(file_exists('img/products/'.$product['id'].'.png')){
-                    echo Html::img('@web/img/products/'.$product['id'].'.png');
+                    <span class="cartImg">
+                    <?php
+                    if ( file_exists('img/products/' . $product['image']) && $product['image'] != "" ) {
+                        echo Html::img('@web/img/products/' . $product['image']); ;
                     } else {
-                    echo Html::img('@web/img/goldwhey.jpg');
-                    }?></span>
+                        echo Html::img('@web/img/products/default.png');
+                    }
+                    ?>
+                    </span>
                     <span class="cartName"><?= $product['name'] ?></span>
                     <span class="cartBrand"><?= $product['brand'] ?></span>
                     <span class="cartPrice"><?= $product['price'] ?></span>
@@ -42,8 +45,8 @@
                     <input class="hidden_id" type="hidden" value="<?= $product['id'] ?>">
                 </div>
             <?php endforeach; ?>
-        <span class="btn cartClean">Очистить Корзину</span>
-        <span class="btn buy">Купить</span>
+        <button class="btn cartClean">Очистить Корзину</button>
+        <button class="btn buy">Купить</button>
         <?php else  : ?>
             <span id="cartNoProducts">No products, please Lorem ipsum dolor sit.</span>
         <?php endif; ?>

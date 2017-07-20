@@ -42,10 +42,19 @@ use yii\helpers\Html;
     </div>
     <?php foreach($article as $value) : ?>
     <div class="article_left">
-        <div class="article_left_title">
+        <div class="article_left__title">
             <a href="<?= Yii::$app->urlManager->createUrl("article/{$value['id']}") ?>"><?= $value['title'] ?></a>
         </div>
-        <div class="article_left_desc">
+        <div class="article_left__img">
+            <?php
+            if (file_exists('img/articles/'.$value['image']) && $value['image'] != "") {
+                echo Html::img('@web/img/articles/'.$value['image'], ['alt' => 'article', 'class' => 'img-responsive']); ;
+            } else {
+                echo Html::img('@web/img/articles/default.jpg', ['alt' => 'article', 'class' => 'img-responsive']);
+            }
+            ?>
+        </div>
+        <div class="article_left__desc">
             <?= $value['description_short'] ?>
             <a href="<?= Yii::$app->urlManager->createUrl("article/{$value['id']}") ?>">Read more</a>
         </div>

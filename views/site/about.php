@@ -1,7 +1,6 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $brand yii\web\View */
 
 use yii\helpers\Html;
 
@@ -9,6 +8,7 @@ $this->title = 'Cart';
 $script = <<< JS
     alert(1);
 JS;
+
 //echo $script;
 //
 //echo Yii::getAlias('@app/migrations');
@@ -32,6 +32,17 @@ print $ref->getFileName() . ':' . $ref->getStartLine();
 
 ?>
 
-
-
+<canvas id="cnv"></canvas>
+<script type="text/javascript" charset="utf-8">
+    cnv = document.getElementById("cnv");
+    cnv.width = 700;
+    cnv.height = 500;
+    ctx = cnv.getContext("2d");
+    ctx.font = "bold 12px sans-serif";
+    text = "abcdefghijklm";
+    for (i = 0; i < text.length; i++) {
+        ctx.fillText(text[i], 300, 100);
+        ctx.rotate(0.05);
+    }
+</script>
 

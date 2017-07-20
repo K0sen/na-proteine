@@ -29,12 +29,11 @@ use yii\widgets\LinkPager;
         <div class="img">
         <a href="<?= Yii::$app->urlManager->createUrl("product/{$product['id']}"); ?>" >
             <?php
-                $check = file_exists('img/products/'.$product['id'].'.png');
-                if ($check) {
-                    echo Html::img('@web/img/products/'.$product['id'].'.png'); ;
-                } else {
-                    echo Html::img('@web/img/goldwhey.jpg');
-                }
+            if ( file_exists('img/products/' . $product['image']) && $product['image'] != "" ) {
+                echo Html::img('@web/img/products/' . $product['image']); ;
+            } else {
+                echo Html::img('@web/img/products/default.png');
+            }
             ?>
         </a>
         </div>

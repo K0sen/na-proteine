@@ -171,9 +171,11 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
-        $products = Product::findByCookie();
-        return $this->render('about', [
-            'products' => $products,
-        ]);
+        return $this->render('about');
+    }
+
+    public function actionDelivery()
+    {
+        return $this->render('delivery');
     }
 }

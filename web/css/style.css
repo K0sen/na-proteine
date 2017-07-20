@@ -254,11 +254,11 @@ i {
 .stick-letter {
 	position: absolute;
 	margin-top: -25px;
-	margin-left: -10px;
+	margin-left: -9px;
 	width: 80px;
 }
 
-.stick-letter > div {
+.stick-letter > span {
 	position: relative;
 	display: inline-block;
 	font-size: 19px;
@@ -520,7 +520,7 @@ i {
 	box-shadow: 4px 4px 20px #ff7a17;
 }
 
-.article_left > .article_left_title {
+.article_left__title {
 	line-height: 35px;
 	text-align: center;
 	background-color: #E4E4E4;
@@ -528,17 +528,46 @@ i {
 	overflow: hidden;
 }
 
-.article_left > .article_left_title > a {
+.article_left__title > a {
 	color: #cd7942;
 	font-size: 17px;
 	font-style: italic;
 	font-weight: bold;
 }
 
-.article_left > .article_left_desc {
+.article_left__desc {
 	text-align: justify;
+	word-wrap: break-word;
 	padding: 5px 8px;
-	border: #c5c5c5 1px solid;
+}
+
+.article_left__img {
+	padding: 10px;
+}
+
+/*ARTICLES*/
+
+.article {
+	padding: 10px;
+	display: block;
+	overflow: hidden;
+}
+
+.article__title {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.article__description {
+	text-align: justify;
+}
+
+.article__img {
+	width: 300px;
+	float: left;
+	margin-right: 30px;
 }
 
 /*CONTENT*/

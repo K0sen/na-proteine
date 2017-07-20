@@ -9,11 +9,12 @@ use app\models\Brand;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $upload app\models\UploadForm */
 ?>
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -36,6 +37,10 @@ use app\models\Brand;
     <?= $form->field($model, 'popularity')->textInput() ?>
 
     <?= $form->field($model, 'info')->textArea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($upload, 'imageFile')->fileInput(['class' => 'file']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

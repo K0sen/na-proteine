@@ -28,10 +28,11 @@ class Article extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description_short', 'description'], 'required'],
+            [['title', 'description_short', 'description', 'image'], 'required'],
             [['title'], 'string', 'max' => 20],
             [['description_short'], 'string', 'max' => 500],
             [['description'], 'string', 'max' => 5000],
+            [['image'],  'string', 'max' => 20],
         ];
     }
 
@@ -45,6 +46,7 @@ class Article extends ActiveRecord
             'title' => 'Title',
             'description_short' => 'Description Short',
             'description' => 'Description',
+            'image' => 'Image Name',
         ];
     }
 

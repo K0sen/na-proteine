@@ -20,13 +20,14 @@ class Product extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'type_id', 'brand_id', 'count', 'info'], 'required'],
+            [['name', 'price', 'type_id', 'brand_id', 'count', 'info', 'image'], 'required'],
             [['price'], 'number'],
             [['type_id', 'brand_id', 'count', 'popularity'], 'integer'],
             [['name'], 'string', 'max' => 30],
             [['info'], 'string', 'max' => 500],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => Type::className(), 'targetAttribute' => ['type_id' => 'id']],
             [['brand_id'], 'exist', 'skipOnError' => true, 'targetClass' => Brand::className(), 'targetAttribute' => ['brand_id' => 'id']],
+            [['image'],  'string', 'max' => 20],
         ];
     }
 
@@ -44,6 +45,7 @@ class Product extends ActiveRecord
             'count' => 'Count',
             'popularity' => 'Popularity',
             'info' => 'Info',
+            'image' => 'Image Name',
         ];
     }
 
@@ -74,7 +76,7 @@ class Product extends ActiveRecord
             $orderBy = 'ORDER BY price DESC';
         }
 
-        $products = Yii::$app->db->createCommand("SELECT p.id ,p.name, p.price, b.brand AS brand, t.type
+        $products = Yii::$app->db->createCommand("SELECT p.id ,p.name, p.price, b.brand AS brand, t.type, p.image
                                                  FROM product p
                                                  LEFT JOIN brand b ON b.id = p.brand_id
                                                  LEFT JOIN type t ON t.id = p.type_id
@@ -93,7 +95,7 @@ class Product extends ActiveRecord
 
         foreach($types as $type) {
 
-            $products[$type['type']] = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.popularity, b.brand, t.type
+            $products[$type['type']] = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.popularity, b.brand, t.type, p.image
                                                     FROM `product` p
                                                     LEFT JOIN type t ON t.id = p.type_id
                                                     LEFT JOIN brand b ON b.id = p.brand_id
@@ -115,7 +117,7 @@ class Product extends ActiveRecord
         $type = Yii::$app->request->get('type');
         $brand = str_replace('_', ' ', $brand);
         $type = str_replace('_', ' ', $type);
-        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
@@ -132,7 +134,7 @@ class Product extends ActiveRecord
     {
         $type = Yii::$app->request->get('type');
         $type = str_replace('_', ' ', $type);
-        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
@@ -147,7 +149,7 @@ class Product extends ActiveRecord
     {
         $brand = Yii::$app->request->get('brand');
         $brand = str_replace('_', ' ', $brand);
-        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
@@ -172,7 +174,7 @@ class Product extends ActiveRecord
         if ($ids){
             $products = [];
             foreach ($ids as $id) {
-                $product = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type
+                $product = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
                                                     FROM `product` p
                                                     LEFT JOIN brand b ON b.id = p.brand_id
                                                     LEFT JOIN type t ON t.id = p.type_id
