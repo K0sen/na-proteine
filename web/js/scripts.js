@@ -285,28 +285,33 @@ $(document).ready(function() {
 		});
 	}
 
-	$('.owl-carousel').owlCarousel({
-		loop : false,
-		nav  : true,
-		autoplay : true,
-		rewind   : true,			// Go backwards when the boundary has reached.
-		autoplayTimeout : 5000,	// def: 5000
-		responsive : {
-			0 : {
-				items : 1
-			},
-			450 : {
-				items : 2
-			},
-			600 : {
-				items : 3
-			},
-			1200 : {
-				items : 4
+	function awaw() {
+		$('.owl-carousel').owlCarousel({
+			loop : false,
+			nav  : true,
+			autoplay : true,
+			rewind   : true,			// Go backwards when the boundary has reached.
+			autoplayTimeout : 5000,	    // def: 5000
+			responsive : {
+				0 : {
+					items : 1
+				},
+				450 : {
+					items : 2
+				},
+				600 : {
+					items : 3
+				},
+				1200 : {
+					items : 4
+				}
 			}
-		}
-	});
+		});
 
+		$('#bicepscurl').css('display', 'none');
+		$('.information-title').css('display', 'block');
+	}
+	setTimeout(awaw, 2000);
 });
 
 // hide collapse menu - trouble (console error)

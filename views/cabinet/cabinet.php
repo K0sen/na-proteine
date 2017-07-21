@@ -3,8 +3,6 @@
 
 $this->title = 'Cabinet';
 
-debug($_COOKIE);
-
 ?>
 
 

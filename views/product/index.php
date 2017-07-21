@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 /* @var $pagination yii\web\View */
 /* @var $product_type yii\web\View */
-/* @var $brand yii\web\View */
 
 $this->title = 'Na-proteine';
 use yii\helpers\Html;
@@ -13,38 +12,40 @@ use yii\widgets\LinkPager;
 
 ?>
 
+<div id="bicepscurl" ><img src="img/bicepcurl.gif" alt="bicepscurl" class="img-responsive"></div>
+
 <?php foreach ($product_type as $key => $products) :
     $link = strtolower($key);
     ?>
     <div class="information-main">
-        <div class="information-title"><a href="<?= Yii::$app->urlManager->createUrl("categories/$link"); ?>"><?= Yii::t('app', "{$key}")?></a> - Popular</div>
-    <div class="owl-carousel owl-theme">
-    <?php foreach ($products as $product) : ?>
-        <div class="information item">
-            <div class="img">
-                <a href="<?= Yii::$app->urlManager->createUrl("product/{$product['id']}"); ?>" >
-                    <?php
-                    if ( file_exists('img/products/' . $product['image']) && $product['image'] != "" ) {
-                        echo Html::img('@web/img/products/' . $product['image']); ;
-                    } else {
-                        echo Html::img('@web/img/products/default.png');
-                    }
-                    ?>
-                </a>
+        <div class="information-title" style="display: none;"><a href="<?= Yii::$app->urlManager->createUrl("categories/$link"); ?>"><?= Yii::t('app', "{$key}")?></a> - Popular</div>
+        <div class="owl-carousel owl-theme">
+        <?php foreach ($products as $product) : ?>
+            <div class="information item">
+                <div class="img">
+                    <a href="<?= Yii::$app->urlManager->createUrl("product/{$product['id']}"); ?>" >
+                        <?php
+                        if ( file_exists('img/products/' . $product['image']) && $product['image'] != "" ) {
+                            echo Html::img('@web/img/products/' . $product['image']); ;
+                        } else {
+                            echo Html::img('@web/img/products/default.png');
+                        }
+                        ?>
+                    </a>
+                </div>
+                <p class="name"><a href="<?= Yii::$app->urlManager->createUrl("product/{$product['id']}"); ?>"><?= $product['name']?> 2700g</a></p>
+                <p class="brand"><a href="<?php
+                    $name = strtolower(str_replace(' ', '_', $product['brand']));
+                    echo Yii::$app->urlManager->createUrl("brand/$name"); ?>
+                                     "><?= $product['brand']?></a></p>
+                <p class="price"><?= $product['price']?> ₴</p>
+                <div class="icons">
+                    <span class="basket" title="Добавить в корзину"></span>
+                </div>
+                <input type="hidden" size="3" value="<?= $product['id']?>" class="hidden_id">
             </div>
-            <p class="name"><a href="<?= Yii::$app->urlManager->createUrl("product/{$product['id']}"); ?>"><?= $product['name']?> 2700g</a></p>
-            <p class="brand"><a href="<?php
-                $name = strtolower(str_replace(' ', '_', $product['brand']));
-                echo Yii::$app->urlManager->createUrl("brand/$name"); ?>
-                                 "><?= $product['brand']?></a></p>
-            <p class="price"><?= $product['price']?> ₴</p>
-            <div class="icons">
-                <span class="basket" title="Добавить в корзину"></span>
-            </div>
-            <input type="hidden" size="3" value="<?= $product['id']?>" class="hidden_id">
+        <?php endforeach; ?>
         </div>
-    <?php endforeach; ?>
-    </div>
     </div>
 <?php endforeach; ?>
 

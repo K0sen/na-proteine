@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 20 2017 г., 20:19
+-- Время создания: Июл 21 2017 г., 18:23
 -- Версия сервера: 10.1.22-MariaDB
 -- Версия PHP: 7.1.4
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `article` (
   `id` int(11) NOT NULL,
   `title` char(20) NOT NULL,
-  `description_short` varchar(1000) NOT NULL,
+  `description_short` varchar(500) NOT NULL,
   `description` varchar(10000) NOT NULL,
   `image` char(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -42,9 +42,9 @@ CREATE TABLE `article` (
 
 INSERT INTO `article` (`id`, `title`, `description_short`, `description`, `image`) VALUES
 (1, 'aa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam minus molestiae nam similique. Architecto consectetur ex fugit hic modi optio vel!', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam minus molestiae nam similique. Architecto consectetur ex fugit hic modi optio vel!', 'MVPS.jpg'),
-(2, 'BBBBb', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere, fugit illo itaque iusto magni minima molestias pariatur quasi, qui quos reiciendis tempore unde ut vitae! Aperiam doloribus dolorum et exercitationem, suscipit tempore veritatis vero! A adipisci animi architecto at aut consequuntur dicta distinctio ducimus est expedita facilis impedit in itaque iure iusto laborum libero maxime minima minus mollitia, nam nemo non quas quibusdamLorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere, fugit illo itaque iusto magni minima molestias pariatur quasi, qui quos reiciendis tempore unde ut vitae! Aperiam doloribus dolorum et exercitationem, suscipit tempore veritatis vero! A adipisci animi architecto at aut consequuntur dicta distinctio ducimus est expedita facilis impedit in itaque iure iusto laborum libero maxime minima minus mollitia, nam nemo non quas quibusdam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam minus molestiae nam similique. Architecto consectetur ex fugit hic modi optio vel!', 'woman BB.jpg'),
+(2, 'BBBBb', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere, fugit illo itaque iusto magni minima molestias pariatur quasi, qui quos reiciendis tempore unde ut vitae! Aperiam doloribus dolorum et exercitationem, suscipit tempore veritatis vero! A adipisci animi architecto at aut consequuntur dicta distinctio ducimus est expedita facilis impedit in itaque iure iusto laborum libero maxime minima minus mollitia, nam nemo non quas quibusdam', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam minus molestiae nam similique. Architecto consectetur ex fugit hic modi optio vel!', 'woman BB.jpg'),
 (3, 'BBBBbcc', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam minus molestiae nam similique. Architecto consectetur ex fugit hic modi optio vel! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam minus molestiae nam similique. Architecto consectetur ex fugit hic modi optio vel!', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam minus molestiae nam similique. Architecto consectetur ex fugit hic modi optio vel!', ''),
-(4, 'nnnn', 'app\\models\\Articleasd as das////////////////////////pppppppppp[[[[[[[[[[]]]]]]]]', 'loreta fads fahdkjf adfasdfafad fadf adfa sf adsf asdfa sdfa dsf  Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere, fugit illo itaque iusto magni minima molestias pariatur quasi, qui quos reiciendis tempore unde ut vitae! Aperiam doloribus dolorum et exercitationem, suscipit tempore veritatis vero! A adipisci animi architecto at aut consequuntur dicta distinctio ducimus est expedita facilis impedit in itaque iure iusto laborum libero maxime minima minus mollitia, nam nemo non quas quibusdam quidem quod saepe sint sit, suscipit tempore tenetur velit vero.', ''),
+(4, 'nnnn', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere,', 'loreta fads fahdkjf adfasdfafad fadf adfa sf adsf asdfa sdfa dsf  Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur consequatur, distinctio dolor error eum facere, fugit illo itaque iusto magni minima molestias pariatur quasi, qui quos reiciendis tempore unde ut vitae! Aperiam doloribus dolorum et exercitationem, suscipit tempore veritatis vero! A adipisci animi architecto at aut consequuntur dicta distinctio ducimus est expedita facilis impedit in itaque iure iusto laborum libero maxime minima minus mollitia, nam nemo non quas quibusdam quidem quod saepe sint sit, suscipit tempore tenetur velit vero.', ''),
 (5, 'dadsfsaf', 'adsfadsfadsfadsfad', 'fadsfasdfadsfasdfas', '');
 
 -- --------------------------------------------------------
@@ -193,25 +193,6 @@ INSERT INTO `comments` (`id`, `created_at`, `updated_at`, `user_id`, `product_id
 (1, 1494688630, 1494688630, 1, 2, 'dsfsdf', 1),
 (2, 1494688728, 1494688735, 3, 2, 'dfdf dfa', 3);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `migration`
---
-
-CREATE TABLE `migration` (
-  `version` varchar(180) NOT NULL,
-  `apply_time` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `migration`
---
-
-INSERT INTO `migration` (`version`, `apply_time`) VALUES
-('m000000_000000_base', 1480107050),
-('m140506_102106_rbac_init', 1494687092),
-('m170113_145207_create_user_table', 1494686933);
 
 -- --------------------------------------------------------
 

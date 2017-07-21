@@ -33,10 +33,6 @@ class ProductController extends Controller
     public function actionTypeBrand()
     {
         $products = Product::findTypeBrand();
-//        echo "<pre>";
-//        print_r($products);
-//        echo "</pre>";
-//        die(); //  TODO
 
         return $this->render('type_brand', [
             'products' => $products,
@@ -46,10 +42,6 @@ class ProductController extends Controller
     public function actionBrand()
     {
         $products = Product::findBrand();
-//        echo "<pre>";
-//        print_r($products);
-//        echo "</pre>";
-//        die(); //  TODO
 
         return $this->render('brand', [
             'products' => $products,
@@ -79,7 +71,7 @@ class ProductController extends Controller
     public function actionProduct($id)
     {
         $product = Product::findOne($id);
-        $brand = Brand::findOne($product->brand_id); // TODO ??
+        $brand = Brand::findOne($product->brand_id);
 
         return $this->render('product', [
             'product' => $product,
