@@ -4,11 +4,8 @@
 
 use yii\helpers\Html;
 
-echo "USING FOR TEST SCRIPTS";
+echo "USING FOR TEST SCRIPTS".'<br>';
 
-debug(file_get_contents(Yii::getAlias('@app').'/na_proteine.sql'));
-
-$this->title = 'Cart';
 $script = <<< JS
     alert(1);
 JS;

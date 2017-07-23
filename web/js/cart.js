@@ -74,11 +74,31 @@ function cartAjax() {
                 cartAjax();
             }
         });
-        $('.cartBuy').click(function(){
-
+        $('.buy').click(function(){
+            buyAppear();
+            buyCount();
         });
+        $('.buy__close').click(buyClose);
         cartCount();
     });
 }
 
 cartAjax();
+
+
+//BUY FUNCTIONS
+
+function buyClose() {
+    $('.buy_shadow').hide();
+}
+
+function buyAppear() {
+    $('.buy_shadow').show();
+}
+
+function buyCount() {
+    $('.cartItem').each(function(){
+        var val = $(this).find('.item_count').val();
+        console.log(val);
+    });
+}

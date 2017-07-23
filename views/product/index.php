@@ -39,8 +39,11 @@ use yii\widgets\LinkPager;
                     echo Yii::$app->urlManager->createUrl("brand/$name"); ?>
                                      "><?= $product['brand']?></a></p>
                 <p class="price"><?= $product['price']?> ₴</p>
-                <div class="icons">
-                    <span class="basket" title="Добавить в корзину"></span>
+                <div class="basket">
+                    <span class="basket__add" title="Добавить в корзину"></span>
+                    <?php if($product['count'] <= 0) : ?>
+                    <span class="basket__inactive" title="Out of sale">
+                    <?php endif; ?>
                 </div>
                 <input type="hidden" size="3" value="<?= $product['id']?>" class="hidden_id">
             </div>

@@ -95,7 +95,7 @@ class Product extends ActiveRecord
 
         foreach($types as $type) {
 
-            $products[$type['type']] = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.popularity, b.brand, t.type, p.image
+            $products[$type['type']] = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.count, p.popularity, b.brand, t.type, p.image
                                                     FROM `product` p
                                                     LEFT JOIN type t ON t.id = p.type_id
                                                     LEFT JOIN brand b ON b.id = p.brand_id
@@ -174,7 +174,7 @@ class Product extends ActiveRecord
         if ($ids){
             $products = [];
             foreach ($ids as $id) {
-                $product = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
+                $product = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.count, p.image, b.brand AS brand, t.type
                                                     FROM `product` p
                                                     LEFT JOIN brand b ON b.id = p.brand_id
                                                     LEFT JOIN type t ON t.id = p.type_id

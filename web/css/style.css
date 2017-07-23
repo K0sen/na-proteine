@@ -129,7 +129,7 @@ i {
 	background: rgba(192, 0, 0, 0.95);
 	border-right: 2px solid black;
 	border-left: 2px solid black;
-	z-index: 22;
+	z-index: 7;
 }
 
 #menu_collapse ul li a {
@@ -235,7 +235,7 @@ i {
 .stick-menu {
 	display: none;
 	position: absolute;
-	z-index: 20;
+	z-index: 7;
 	top: 153px;
 	left: 25px;
 }
@@ -818,24 +818,44 @@ i {
 }
 
 .basket {
-	float: right;
-	margin-right: 15px;
-	margin-top: -30px;
+	position: relative;
+	right: 5px;
+	bottom: 25px;
+	height: 50px;
 	width: 60px;
-	height: 70px;
+	float: right;
+}
+
+.basket__add {
+	float: right;
+	width: 60px;
+	height: 50px;
 	line-height: 35px;
 	background-image: url(../img/basket.png);
 	background-repeat: no-repeat;
 	opacity: 0.6;
 }
 
-.basket:hover {
+.basket__add:hover {
 	opacity: 1;
+}
+
+.basket__inactive {
+	display: block;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.3);
+	background-image: url('../img/red cross.png');
+	background-repeat: no-repeat;
+	background-position: 2px -2px;
+	background-size: 55px;
+	width: 100%;
+	height: 100%;
+	z-index: 6;
 }
 
 #basket-info {
 	display: none;
-	z-index: 15;
+	z-index: 7;
 	position: relative;
 	height: 30px;
 	width: 200px;
@@ -895,11 +915,13 @@ i {
 #cartContent .cartName {
 	width: 40%;
 	background-color: #d2d2d2;
+	line-height: 40px;
 }
 
 #cartContent .cartBrand {
 	width: 16%;
 	background-color: #d2d2d2;
+	line-height: 40px;
 }
 
 #cartContent .cartPrice {
@@ -1084,6 +1106,50 @@ i {
 	display: none;
 }
 
+/*BUY*/
+
+.buy_shadow {
+	display: none;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 10;
+}
+
+.buy__window {
+	position: absolute;
+	top: 160px;
+	right: 50%;
+	padding: 10px;
+	background-color: white;
+}
+
+.buy__title {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.buy__close {
+	float: right;
+	color: red;
+	cursor: pointer;
+}
+
+.buy__list .item {
+	padding: 5px 0;
+	border-bottom: 1px solid gray;
+}
+
+.buy__list .item__sum {
+	font-weight: bold;
+}
+
 /*INFO BLOCKS*/
 
 #basket-count {
@@ -1099,14 +1165,20 @@ i {
 	width: 110px;
 	z-index: 5;
 	display: block;
-	margin-left: 130px;
-	margin-top: -30px;
+	bottom: 20px;
+	right: 50px;
 	padding: 10px 0 10px 3px;
 	background: rgba(255, 255, 0, 0.8);
 }
 
 .infoRed {
 	background: rgba(255, 0, 0, 0.8);
+}
+
+/*CABINET*/
+
+#cabinet {
+	margin: 0 15px;
 }
 
 /*NAVIGATION*/
@@ -1363,6 +1435,10 @@ i {
 
 	#cartContent .cartPrice {
 		display: none;
+	}
+
+	.buy__window {
+		right: 10%;
 	}
 
 	#but_collapse {

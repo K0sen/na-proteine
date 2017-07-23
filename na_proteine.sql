@@ -430,12 +430,6 @@ ALTER TABLE `comments`
   ADD KEY `rewrite_by` (`rewrite_by`);
 
 --
--- Индексы таблицы `migration`
---
-ALTER TABLE `migration`
-  ADD PRIMARY KEY (`version`);
-
---
 -- Индексы таблицы `product`
 --
 ALTER TABLE `product`
