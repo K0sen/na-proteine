@@ -20,6 +20,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/style.css',
         'css/bootstrap.css',
+        'css/jquery-ui.css',
         'css/owl.carousel.css',
         'css/owl.theme.default.css'
     ];
@@ -27,7 +28,8 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/scripts.js',
         'js/bootstrap.min.js',
-//        'js/jquery.sticky.js',
+        'js/jquery.js',
+        'js/jquery-ui.js',
         'js/cookie.js',
         'js/owl.carousel.js'
     ];

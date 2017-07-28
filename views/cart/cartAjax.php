@@ -58,13 +58,38 @@ use yii\helpers\Html;
                     <input class="hidden_id" type="hidden" value="<?= $product['id'] ?>">
                 </div>
             <?php endforeach; ?>
-        <button class="btn cartClean">Очистить Корзину</button>
-        <button class="btn buy">Купить</button>
+        <button type="button" class="btn cartClean">Очистить Корзину</button>
+        <button type="button" class="btn buy">Купить</button>
+
         <?php else  : ?>
             <span id="cartNoProducts">No products, please Lorem ipsum dolor sit.</span>
         <?php endif; ?>
     </div>
 
-<!--    --><?//= $this->render('@app/views/cart/buy.php', ['products' => $products]) ?>
+    <div class="buy_shadow">
+        <div class="buy__window">
+            <span class="buy__drag">you can drag me :)</span>
+            <div class="buy__title">Подтвердите покупку<span class="buy__close">X</span></div>
+            <div class="buy__list">
+                <?php if(isset($products)) :
+                    foreach($products as $product) : ?>
+                        <div class="item">
+                            <div class="item__name"><?= $product['name'] ?></div>
+                            <div class="item__sum">
+                                <span class="item__price"><?= $product['price'] ?></span>
+                                <span>x</span>
+                                <span class="item__count"></span>
+                                <span>=</span>
+                                <span class="item__result"></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+            <div class="buy__price">fsdfsdfsfsdfsdf</div>
+            <button class="btn buy__button">Купить</button>
+        </div>
+    </div>
+
 </div>
 

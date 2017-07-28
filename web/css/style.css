@@ -1125,8 +1125,16 @@ i {
 	position: absolute;
 	top: 160px;
 	right: 50%;
+	width: 300px;
 	padding: 10px;
 	background-color: white;
+}
+
+.buy__drag {
+	position: absolute;
+	top: 0;
+	font-size: 13px;
+	color: #2ECC40;
 }
 
 .buy__title {
@@ -1147,6 +1155,12 @@ i {
 }
 
 .buy__list .item__sum {
+	font-weight: bold;
+}
+
+.buy__price {
+	padding: 10px;
+	font-style: italic;
 	font-weight: bold;
 }
 
@@ -1438,7 +1452,7 @@ i {
 	}
 
 	.buy__window {
-		right: 10%;
+		right: 30px;
 	}
 
 	#but_collapse {

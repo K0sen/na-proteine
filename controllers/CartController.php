@@ -24,4 +24,9 @@ class CartController extends Controller
         ]);
     }
 
+    public function acrionBuy()
+    {
+        return $this->renderAjax('buy');
+    }
+
 }
