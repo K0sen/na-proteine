@@ -2,6 +2,10 @@
 
 /* @var $products yii\web\View */
 
-debug($_POST);
+if(!empty($products)) {
+    debug($products);
+} else {
+    echo 'Error';
+}
 
 ?>

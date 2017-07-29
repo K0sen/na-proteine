@@ -109,15 +109,15 @@ $article = Article::getTwo();
             <?php endif; ?>
         </div>
         <div class="stick-menu">
-            <div class="stick-but">
-            <div class="stick-letter">
+            <div class="stick-border">
+                <div class="stick-letter">
                     <span id="m">M</span>
                     <span id="e">E</span>
                     <span id="n">N</span>
                     <span id="u">U</span>
                 </div>
-                <div class="stick-arrow as"></div>
             </div>
+            <div class="stick-arrow"></div>
             <div class="stick-group">
                 <ul>
                     <?php foreach ($brand as $key => $brand_name) : ?>

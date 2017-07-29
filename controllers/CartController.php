@@ -24,9 +24,12 @@ class CartController extends Controller
         ]);
     }
 
-    public function acrionBuy()
+    public function actionBuy()
     {
-        return $this->renderAjax('buy');
+        $products = Yii::$app->request->post();
+        unset($products['_csrf']);
+
+        return $this->render('buy', ['products' => $products]);
     }
 
 }

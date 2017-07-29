@@ -83,7 +83,7 @@ $(document).ready(function() {
             cartCount();
             $( ".buy__window" ).draggable();
             $( ".buy__button" ).click(function() {
-                $('#cartContent').find('.buy').click();
+                $( "#buy__form" ).submit();
             });
         });
     }

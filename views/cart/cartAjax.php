@@ -28,13 +28,14 @@ use yii\helpers\Html;
         ?>
     </div>
     <div id="cartContent">
-        <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
-        <?php if(isset($products)) :
-            foreach($products as $product) : ?>
+        <form id="buy__form" action="/buy" method="post">
+            <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
+            <?php if(isset($products)) :
+                foreach($products as $product) : ?>
                 <div class="cartItem">
                     <span class="cartCount">x
                         <?php if($product['count'] >= 1) : ?>
-                        <input class="item_count" type="number" min="1" max="<?= $product['count'] ?>" value="1" size="5">
+                        <input name="<?= $product['id'] ?>" class="item_count" type="number" min="1" max="<?= $product['count'] ?>" value="1" size="5">
                         <?php else : ?>
                         <input class="item_count" type="number" min="0" max="0" value="0" size="5">
                         <?php endif; ?>
@@ -57,9 +58,10 @@ use yii\helpers\Html;
                     <span class="btn cartRemove">X</span>
                     <input class="hidden_id" type="hidden" value="<?= $product['id'] ?>">
                 </div>
-            <?php endforeach; ?>
-        <button type="button" class="btn cartClean">Очистить Корзину</button>
-        <button type="button" class="btn buy">Купить</button>
+                <?php endforeach; ?>
+            <button type="button" class="btn cartClean">Очистить Корзину</button>
+            <button type="button" class="btn buy">Купить</button>
+        </form>
 
         <?php else  : ?>
             <span id="cartNoProducts">No products, please Lorem ipsum dolor sit.</span>
@@ -86,7 +88,7 @@ use yii\helpers\Html;
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            <div class="buy__price">fsdfsdfsfsdfsdf</div>
+            <div class="buy__price"></div>
             <button class="btn buy__button">Купить</button>
         </div>
     </div>

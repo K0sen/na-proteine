@@ -57,14 +57,14 @@ $(document).ready(function() {
 		$('#header_fix').slideDown(150);
 	}
 
-	$('.stick-but').click(function(){
+	$('.stick-arrow').click(function(){
 		$(".stick-arrow").toggleClass('active');
 		$(".stick-group").toggle(800);
 	});
 
-	//$('.stick-but').hover(function(){
-	//	$(this)
-	//})
+	//$('.stick-arrow').hover(function(){
+	//	$(this).siblings('.stick-border');
+	//});
 
 	$('.stick-bottom').hover(function(){
 		$(this).find('.stick-triangle').css('borderTopColor', '#13c30a');
@@ -290,7 +290,7 @@ $(document).ready(function() {
 			nav  : true,
 			autoplay : true,
 			rewind   : true,			// Go backwards when the boundary has reached.
-			autoplayTimeout : 7000,	    // def: 5000
+			autoplayTimeout : 5000,	    // def: 5000
 			autoplayHoverPause : true,  // customize
 			responsive : {
 				0 : {
