@@ -1,0 +1,9 @@
+--------------------
+08.02.17 14:04:47 > admin e-mail: konstantin0@bigmir.net
+15: Carvedilol count: 1
+OK
+
+--------------------
+08.02.17 14:05:12 > admin e-mail: konstantin0@bigmir.net
+15: Carvedilol count: 1
+Error

@@ -1,11 +1,16 @@
 <?php
 
+use yii\helpers\Html;
 /* @var $products yii\web\View */
 
-if(!empty($products)) {
-    debug($products);
+if($products) {
+    echo 'Bought: ' . '<br>';
+    foreach($products as $id => $count) {
+        echo \app\models\Product::findOne(1)->name . ' x' . $count . '<br>';
+    }
+    echo Html::a('To main page', '/');
 } else {
-    echo 'Error';
+    echo 'Something went wrong, contact administrator';
 }
 
 ?>

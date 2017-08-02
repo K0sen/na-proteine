@@ -20,7 +20,7 @@ class Product extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'type_id', 'brand_id', 'count', 'info', 'image'], 'required'],
+            [['name', 'price', 'type_id', 'brand_id', 'count', 'info'], 'required'],
             [['price'], 'number'],
             [['type_id', 'brand_id', 'count', 'popularity'], 'integer'],
             [['name'], 'string', 'max' => 30],
@@ -83,7 +83,7 @@ class Product extends ActiveRecord
                                                  $orderBy
                                                  LIMIT $pagination->limit OFFSET $pagination->offset
                                                  ")
-                                         ->queryAll(); // TODO request by AR
+                                    ->queryAll(); // TODO request by AR
 
         return $products;
     }
@@ -96,15 +96,15 @@ class Product extends ActiveRecord
         foreach($types as $type) {
 
             $products[$type['type']] = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.count, p.popularity, b.brand, t.type, p.image
-                                                    FROM `product` p
-                                                    LEFT JOIN type t ON t.id = p.type_id
-                                                    LEFT JOIN brand b ON b.id = p.brand_id
-                                                    WHERE t.type = :type
-                                                    ORDER BY p.popularity DESC
-                                                    LIMIT 10
-                                                 ")
-                                        ->bindValue(':type', $type['type'])
-                                        ->queryAll(); // TODO request by AR
+                                                                    FROM `product` p
+                                                                    LEFT JOIN type t ON t.id = p.type_id
+                                                                    LEFT JOIN brand b ON b.id = p.brand_id
+                                                                    WHERE t.type = :type
+                                                                    ORDER BY p.popularity DESC
+                                                                    LIMIT 10
+                                                                    ")
+                                                    ->bindValue(':type', $type['type'])
+                                                    ->queryAll(); // TODO request by AR
 
         }
 
@@ -123,10 +123,10 @@ class Product extends ActiveRecord
                                                 LEFT JOIN type t ON t.id = p.type_id
                                                 WHERE b.brand = :brand
                                                 AND t.type = :type
-                                               ")
-                                        ->bindValue(':brand', $brand)
-                                        ->bindValue(':type', $type)
-                                        ->queryAll();
+                                                 ")
+                                    ->bindValue(':brand', $brand)
+                                    ->bindValue(':type', $type)
+                                    ->queryAll();
         return $products;
     }
 
@@ -139,9 +139,9 @@ class Product extends ActiveRecord
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
                                                 WHERE  t.type = :type
-                                               ")
-                                        ->bindValue(':type', $type)
-                                        ->queryAll();
+                                                 ")
+                                    ->bindValue(':type', $type)
+                                    ->queryAll();
         return $products;
     }
 
@@ -154,9 +154,9 @@ class Product extends ActiveRecord
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
                                                 WHERE b.brand = :brand
-                                               ")
-                                        ->bindValue(':brand', $brand)
-                                        ->queryAll();
+                                                 ")
+                                    ->bindValue(':brand', $brand)
+                                    ->queryAll();
         return $products;
     }
 
@@ -175,11 +175,11 @@ class Product extends ActiveRecord
             $products = [];
             foreach ($ids as $id) {
                 $product = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.count, p.image, b.brand AS brand, t.type
-                                                    FROM `product` p
-                                                    LEFT JOIN brand b ON b.id = p.brand_id
-                                                    LEFT JOIN type t ON t.id = p.type_id
-                                                    WHERE p.id = :id
-                                               ")
+                                                        FROM `product` p
+                                                        LEFT JOIN brand b ON b.id = p.brand_id
+                                                        LEFT JOIN type t ON t.id = p.type_id
+                                                        WHERE p.id = :id
+                                                        ")
                                         ->bindValue(':id', $id)
                                         ->queryOne();
                 $products[] = $product;
@@ -188,6 +188,28 @@ class Product extends ActiveRecord
         } else {
             return null;
         }
+    }
+
+    public function buy(array $products)
+    {
+        foreach ($products as $id => $count) {
+            $product = Product::findOne($id);
+            $product->count -= $count;
+            $product->popularity++;
+            if(!$product->update()) return null;
+        }
+        return $products;
+    }
+
+    public function buyCountCheck(array $products)
+    {
+        foreach ($products as $id => $count) {
+            $product = Product::findOne($id);
+            if($product->count < $count) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
