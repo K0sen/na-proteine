@@ -10,7 +10,7 @@ if($products) {
     }
     echo Html::a('To main page', '/');
 } else {
-    echo 'Something went wrong, contact administrator';
+    echo 'Something went wrong, <a href="mailto:admin@na-proteine.net">contact administrator</a>';
 }
 
 ?>

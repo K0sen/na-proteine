@@ -7,6 +7,9 @@ assets/site develope plan.txt
 #index.php
 /web/index.php
 
+#log
+log/*
+
 # netbeans project files
 nbproject
 

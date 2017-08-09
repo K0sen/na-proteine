@@ -1,4 +1,6 @@
-Database scheme is in root of the project - "na-proteine.sql". You can migrate it with yii2 using command "yii migrate".
+#Na-proteine
+Project is in develope state. Database scheme is in root of the project - "na-proteine.sql". You can migrate it with yii2 using command "yii migrate" (lame implaintation in here (: ). 
+I'm only a student and I recognize that my code is not perfect so I'll be appreciated if you write to me with some advices and critic.
 
 Yii 2 Basic Project Template
 ============================

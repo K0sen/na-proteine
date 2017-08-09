@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Grog
- * Date: 15.05.2017
- * Time: 16:36
- */
 
 namespace app\controllers;
 
 use app\models\Article;
-use app\models\Brand;
 use Yii;
 use yii\web\Controller;
 
