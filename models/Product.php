@@ -76,7 +76,7 @@ class Product extends ActiveRecord
             $orderBy = 'ORDER BY price DESC';
         }
 
-        $products = Yii::$app->db->createCommand("SELECT p.id ,p.name, p.price, b.brand AS brand, t.type, p.image
+        $products = Yii::$app->db->createCommand("SELECT p.id ,p.name, p.count, p.popularity, p.price, b.brand, t.type, p.image
                                                  FROM product p
                                                  LEFT JOIN brand b ON b.id = p.brand_id
                                                  LEFT JOIN type t ON t.id = p.type_id

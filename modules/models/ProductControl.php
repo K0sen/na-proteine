@@ -20,7 +20,7 @@ class ProductControl extends Product
         return [
             [['id', 'count', 'popularity'], 'integer'],
             [['name', 'type_id', 'brand_id', 'info'], 'safe'],    //change type/brand_id from integer to sage rule
-            [['price'], 'number'],
+            [['price'], 'number', 'max' => 4],
         ];
     }
 

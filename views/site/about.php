@@ -46,4 +46,3 @@ print $ref->getFileName() . ':' . $ref->getStartLine();
         ctx.rotate(0.05);
     }
 </script>
-

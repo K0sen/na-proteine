@@ -11,15 +11,29 @@ use yii\data\Pagination;
 
 class ProductController extends Controller
 {
-
-    public function actionIndex()
+    public function actionIndex($sort = null)
     {
-        $product_type = Product::getMainPage();
+        $query = Product::find();
+        $pagination = new Pagination([
+            'defaultPageSize' => 12,
+            'totalCount' => $query->count(),
+        ]);
+        $products = Product::getProducts($pagination, $sort);
 
-        return $this->render('index', [
-            'product_type' => $product_type,
+        return $this->render('index_old', [
+            'products' => $products,
+            'pagination' => $pagination,
         ]);
     }
+
+//    public function actionIndex()
+//    {
+//        $product_type = Product::getMainPage();
+//
+//        return $this->render('index', [
+//            'product_type' => $product_type,
+//        ]);
+//    }
 
     public function actionType()
     {
