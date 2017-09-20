@@ -148,7 +148,7 @@ $article = Article::getTwo();
     </div>
     <div id="basket-info"  title="Щёлкните для перехода в корзину"><a href="<?= Yii::$app->urlManager->createUrl("cart/show"); ?>">
         <span id="basket-count"></span>
-        <?= Html::img('@web/img/telejka.png', ['id' => 'telejka'])?>
+        <?= Html::img('@web/img/Telejka.png', ['id' => 'telejka'])?>
     </a></div>
 
     <div id="content">

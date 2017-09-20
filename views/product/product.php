@@ -5,7 +5,7 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \app\models\Comments */
 
-use yii\helpers\html;
+use yii\helpers\Html;
 
 $this->title = $product['name'];
 $this->params['breadcrumbs'][] = ['label' => 'Brands', 'url' => ['/brand']];
