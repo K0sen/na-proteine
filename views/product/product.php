@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div id="product-top">
         <div id="product-img">
             <?php
-            if ( file_exists('img/products/' . $product['image']) && $product['image'] != "" ) {
+            if ( file_exists('img/products/' . $product['image']) && $product[
+                'image'] != "" ) {
                 echo Html::img('@web/img/products/' . $product['image']); ;
             } else {
                 echo Html::img('@web/img/products/default.png');
@@ -26,8 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
         </div>
         <input id="p_id" type="hidden" value="<?=$product['id']?>">
-        <a href="<?= Yii::$app->urlManager->createUrl('/cart'); ?>" style="text-decoration: none; color: black;"><span class="btn toCart">Пройти на кассу</span></a>
-        <span class="btn cartAdd">Добавить в корзину</span>
+        <?php if($product['count'] <= 0) : ?>
+            <a href="<?= Yii::$app->urlManager->createUrl('/'); ?>" style="text-decoration: none; color: black;"><span class="btn">Out of sale. To main</span></a>
+        <?php else : ?>
+            <a href="<?= Yii::$app->urlManager->createUrl('/cart'); ?>" style="text-decoration: none; color: black;"><span class="btn toCart">Пройти на кассу</span></a>
+            <span class="btn cartAdd">Добавить в корзину</span>
+        <?php endif; ?>
     </div>
     <div id="product-info">
         <div id="switch">
@@ -41,8 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-<?php else: ?>
+<?php else : ?>
 
     Not exist item with id "<?= $_GET['id']; ?>"
 
-<?php endif ?>
+<?php endif; ?>

@@ -117,7 +117,7 @@ class Product extends ActiveRecord
         $type = Yii::$app->request->get('type');
         $brand = str_replace('_', ' ', $brand);
         $type = str_replace('_', ' ', $type);
-        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.count, b.brand AS brand, t.type, p.image
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
@@ -134,7 +134,7 @@ class Product extends ActiveRecord
     {
         $type = Yii::$app->request->get('type');
         $type = str_replace('_', ' ', $type);
-        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.count, b.brand AS brand, t.type, p.image
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
@@ -149,7 +149,7 @@ class Product extends ActiveRecord
     {
         $brand = Yii::$app->request->get('brand');
         $brand = str_replace('_', ' ', $brand);
-        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, b.brand AS brand, t.type, p.image
+        $products = Yii::$app->db->createCommand("SELECT p.id, p.price, p.name, p.count, b.brand AS brand, t.type, p.image
                                                 FROM `product` p
                                                 LEFT JOIN brand b ON b.id = p.brand_id
                                                 LEFT JOIN type t ON t.id = p.type_id
