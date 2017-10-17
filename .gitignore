@@ -5,7 +5,7 @@
 assets/site develope plan.txt
 
 #log
-log/*
+log/orders.txt
 
 # netbeans project files
 nbproject
